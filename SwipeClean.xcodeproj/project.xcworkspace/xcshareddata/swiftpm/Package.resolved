@@ -1,0 +1,15 @@
+{
+  "originHash" : "148e6ac6e54ebc4d030467ffa1cc0b83b88f08dd7432d64ea11b7ed50c5d05ae",
+  "pins" : [
+    {
+      "identity" : "myfeedbacklibrary",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JanLHai/MyFeedbackLibrary.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "cccc2de7600e49517f552525368ca07a1c1d0b52"
+      }
+    }
+  ],
+  "version" : 3
+}
