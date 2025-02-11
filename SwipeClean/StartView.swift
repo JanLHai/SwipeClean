@@ -9,13 +9,10 @@ import SwiftUI
 
 struct StartView: View {
     
-    // State-Variablen für die Anzeige
+    // Statistiken aus der Database
     @State private var keptCount: Int = DatabaseManager.shared.keptImagesCount
     @State private var deletedCount: Int = DatabaseManager.shared.deletedCount
     @State private var freedSpace: Int64 = DatabaseManager.shared.freedSpace
-    
-    // Timer, der einmal pro Sekunde feuert
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
@@ -24,19 +21,16 @@ struct StartView: View {
                 Spacer()
                 navigationButtons
                 Spacer()
-                
             }
             .padding(.top, 20)
-            // Wir entfernen hier .navigationTitle, da wir einen eigenen Titel setzen
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // Benutzerdefinierter Navigationstitel
+                // Titel
                 ToolbarItem(placement: .principal) {
                     Text("SwipeClean")
                         .font(.largeTitle.bold())
-                    // Mit diesem Offset wird der Titel weiter oben angezeigt.
                 }
-                // Einstellungsbutton in der rechten oberen Ecke
+                // Einstellungen
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gear")
@@ -48,13 +42,14 @@ struct StartView: View {
                 }
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 1 Sekunde Verzögerung
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     deletedCount = DatabaseManager.shared.deletedCount
                     freedSpace = DatabaseManager.shared.freedSpace
                     keptCount = DatabaseManager.shared.keptImagesCount
                 }
             }
-        }.padding(.top, 10)
+        }
+        .padding(.top, 10)
     }
     
     // Anzeige der Statistiken
@@ -64,14 +59,15 @@ struct StartView: View {
             Text("Gelöschte Medien: \(deletedCount)")
             Text("Freigeräumter Speicher: \(formattedFreedSpace(bytes: freedSpace))")
         }
-        .padding([.top, .bottom])
+        .padding([.top, .bottom], 120)
     }
     
-    // Navigation-Buttons als separate Gruppe
+    // Navigation-Buttons
     private var navigationButtons: some View {
         VStack(spacing: 10) {
+            // "Aufräumen" – ohne Filter (wie bisher)
             NavigationLink(
-                destination: ContentView(album: nil)
+                destination: ContentView(album: nil, dateRange: nil)
                     .navigationBarBackButtonHidden(true)
                     .navigationBarHidden(false)
             ) {
@@ -79,15 +75,23 @@ struct StartView: View {
                     .buttonStyle(background: .blue)
             }
             
+            // "Ordner auswählen"
             NavigationLink(
                 destination: GalleryFoldersView()
                     .navigationBarTitle("Ordner auswählen", displayMode: .inline)
             ) {
                 Text("Ordner auswählen")
-                    .buttonStyle(background: .green)
+                    .buttonStyle(background: .gray.opacity(0.6))
+            }
+            
+            // "Zeitraum auswählen" – führt zuerst zur Datumsauswahl
+            NavigationLink(destination: DateRangeSelectionView()) {
+                Text("Zeitraum auswählen")
+                    .buttonStyle(background: .gray.opacity(0.6))
             }
         }
         .padding(.horizontal)
+        .padding(.top, 100)
     }
 }
 
@@ -104,7 +108,7 @@ extension View {
     }
 }
 
-// Formatierungsfunktion für den freigeräumten Speicher
+// Formatierung des freigehaltenen Speichers
 func formattedFreedSpace(bytes: Int64) -> String {
     let mb = Double(bytes) / (1024 * 1024)
     let gb = mb / 1024

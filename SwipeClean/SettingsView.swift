@@ -7,7 +7,7 @@
 
 import SwiftUICore
 import SwiftUI
-import MyFeedbackLibrary
+//import MyFeedbackLibrary
 
 struct SettingsView: View {
     @State private var showConfirmation = false
@@ -16,8 +16,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.gray
-                                    .ignoresSafeArea()
+                Color.gray.ignoresSafeArea(.all)
                 Form {
                     Section("Einstellungen") {
                         Button(action: {
@@ -45,12 +44,13 @@ struct SettingsView: View {
                                 secondaryButton: .cancel(Text("Abbrechen"))
                             )
                         }
+                        .accessibilityLabel("Datenbank zurücksetzen")
                     }
                     
                     Section("Hilfe") {
-                        NavigationLink(destination: FeatureRequestsView()) {
+                        /*NavigationLink(destination: FeatureRequestsView()) {
                             Text("Feature Anfragen")
-                        }
+                        }*/
                         Button(action: {
                             openEmail()
                         }) {

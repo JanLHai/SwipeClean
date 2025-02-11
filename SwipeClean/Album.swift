@@ -120,7 +120,7 @@ struct GalleryFoldersView: View {
     @ViewBuilder
     private func destinationView(for album: Album) -> some View {
         // Hier wird die ContentView mit dem Album als Parameter aufgerufen.
-        ContentView(album: album.assetCollection)
+        ContentView(album: album.assetCollection, dateRange: nil)
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(false)
     }
