@@ -7,6 +7,7 @@
 
 import SwiftUICore
 import SwiftUI
+import MyFeedbackLibrary
 
 struct SettingsView: View {
     @State private var showConfirmation = false
@@ -47,6 +48,9 @@ struct SettingsView: View {
                     }
                     
                     Section("Hilfe") {
+                        NavigationLink(destination: FeatureRequestsView()) {
+                            Text("Feature Anfragen")
+                        }
                         Button(action: {
                             openEmail()
                         }) {
