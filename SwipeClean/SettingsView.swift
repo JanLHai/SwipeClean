@@ -13,63 +13,85 @@ struct SettingsView: View {
     @State private var showConfirmation = false
     @State private var showSlideOver = false
 
+    init() {
+        // Setze den Hintergrund der UITableView und ihrer Zellen für diese View
+        UITableView.appearance().backgroundColor = UIColor.systemGroupedBackground
+        UITableViewCell.appearance().backgroundColor = UIColor.systemGroupedBackground
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
-                Color.gray.ignoresSafeArea(.all)
-                Form {
-                    Section("Einstellungen") {
-                        Button(action: {
-                            // Popup zur Bestätigung anzeigen
-                            showConfirmation = true
-                        }) {
-                            Text("Datenbank Zurücksetzen")
-                                .foregroundColor(.red)
-                        }.alert(isPresented: $showConfirmation) {
-                            Alert(
-                                title: Text("Datenbank zurücksetzen"),
-                                message: Text("Bist du dir sicher, dass du die Datenbank löschen möchtest?"),
-                                primaryButton: .destructive(Text("Löschen"), action: {
-                                    DatabaseManager.shared.resetDatabase()
-                                    withAnimation {
-                                        showSlideOver = true
-                                    }
-                                    // SlideOver nach 3 Sekunden wieder ausblenden
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                        withAnimation {
-                                            showSlideOver = false
-                                        }
-                                    }
-                                }),
-                                secondaryButton: .cancel(Text("Abbrechen"))
-                            )
-                        }
-                        .accessibilityLabel("Datenbank zurücksetzen")
+                Color(UIColor.systemGroupedBackground)
+                    .ignoresSafeArea(.all)
+                VStack(spacing: 25) {
+                    // Oberer Header mit Icon und Titel
+                    VStack {
+                        Image("SwipeClean-Icon_Light")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: UIScreen.main.bounds.width * 0.3)
+                            .clipShape(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width / 15, style: .continuous))
+                            .padding(.top, 16)
+                        Text("SwipeClean")
+                            .font(.largeTitle)
+                            .padding(.top, 8)
                     }
                     
-                    Section("Hilfe") {
-                        /*NavigationLink(destination: FeatureRequestsView()) {
-                            Text("Feature Anfragen")
-                        }*/
-                        Button(action: {
-                            openEmail()
-                        }) {
-                            Text("Supportanfrage")
-                        }
-                    }
-                    
-                    Section("Information") {
-                        Button(action: {
-                            if let url = URL(string: "https://swipeclean.jan-haider.dev/PrivacyPolice.html") {
-                                UIApplication.shared.open(url)
+                    // Formular mit den übrigen Elementen
+                    Form {
+                        Section("Einstellungen") {
+                            Button(action: {
+                                // Popup zur Bestätigung anzeigen
+                                showConfirmation = true
+                            }) {
+                                Text("Datenbank Zurücksetzen")
+                                    .foregroundColor(.red)
                             }
-                        }) {
-                            Text("Privacy Policy")
+                            .alert(isPresented: $showConfirmation) {
+                                Alert(
+                                    title: Text("Datenbank zurücksetzen"),
+                                    message: Text("Bist du dir sicher, dass du die Datenbank löschen möchtest?"),
+                                    primaryButton: .destructive(Text("Löschen"), action: {
+                                        DatabaseManager.shared.resetDatabase()
+                                        withAnimation {
+                                            showSlideOver = true
+                                        }
+                                        // SlideOver nach 3 Sekunden wieder ausblenden
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                            withAnimation {
+                                                showSlideOver = false
+                                            }
+                                        }
+                                    }),
+                                    secondaryButton: .cancel(Text("Abbrechen"))
+                                )
+                            }
+                            .accessibilityLabel("Datenbank zurücksetzen")
+                        }
+                        
+                        Section("Hilfe") {
+                            Button(action: {
+                                openEmail()
+                            }) {
+                                Text("Supportanfrage")
+                            }
+                        }
+                        
+                        Section("Information") {
+                            Button(action: {
+                                if let url = URL(string: "https://swipeclean.jan-haider.dev/PrivacyPolice.html") {
+                                    UIApplication.shared.open(url)
+                                }
+                            }) {
+                                Text("Privacy Policy")
+                            }
                         }
                     }
+                    // Entferne den Standard-Hintergrund der Form
+                    .scrollContentBackground(.hidden)
+                    .background(Color(UIColor.systemGroupedBackground))
                 }
-                .navigationTitle("Einstellungen")
-                .navigationBarTitleDisplayMode(.inline)
                 
                 // SlideOver-Nachricht
                 if showSlideOver {
@@ -79,8 +101,8 @@ struct SettingsView: View {
                         .accessibilityIdentifier("slideOverMessage")
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
-        // Alert, der den Löschvorgang bestätigt
     }
 }
 
