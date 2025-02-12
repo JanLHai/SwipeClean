@@ -243,7 +243,9 @@ struct ContentView: View {
         if let album = album {
             let fetchResult = PHAsset.fetchAssets(in: album, options: fetchOptions)
             fetchResult.enumerateObjects { asset, _, _ in
-                if !DatabaseManager.shared.isAssetKeptRecently(assetID: asset.localIdentifier) {
+                // Beachte: Nun werden auch gelöschte Assets herausgefiltert!
+                if !DatabaseManager.shared.isAssetKeptRecently(assetID: asset.localIdentifier) &&
+                    !DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
                     if let dateRange = dateRange {
                         if let creationDate = asset.creationDate,
                            creationDate >= dateRange.start && creationDate <= dateRange.end {
@@ -257,7 +259,8 @@ struct ContentView: View {
         } else {
             let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
             fetchResult.enumerateObjects { asset, _, _ in
-                if !DatabaseManager.shared.isAssetKeptRecently(assetID: asset.localIdentifier) {
+                if !DatabaseManager.shared.isAssetKeptRecently(assetID: asset.localIdentifier) &&
+                    !DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
                     if let dateRange = dateRange {
                         if let creationDate = asset.creationDate,
                            creationDate >= dateRange.start && creationDate <= dateRange.end {
@@ -289,7 +292,11 @@ struct ContentView: View {
     
     func removeCurrentAsset() {
         if let currentAsset = assets.first {
-            imageCache.cache.removeValue(forKey: currentAsset.localIdentifier)
+            // Nur aus dem Cache entfernen, wenn das Asset nicht als gelöscht markiert ist,
+            // da der SlideOver ggf. noch auf das Bild zugreift.
+            if !DatabaseManager.shared.isAssetDeleted(assetID: currentAsset.localIdentifier) {
+                imageCache.cache.removeValue(forKey: currentAsset.localIdentifier)
+            }
         }
         if !assets.isEmpty {
             assets.removeFirst()

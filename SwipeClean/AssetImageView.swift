@@ -2,6 +2,7 @@ import SwiftUI
 import Photos
 import PhotosUI
 
+
 struct AssetImageView: View {
     let asset: PHAsset
     @ObservedObject var imageCache: ImageCache
@@ -10,37 +11,42 @@ struct AssetImageView: View {
     @State private var livePhoto: PHLivePhoto? = nil
 
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            if asset.mediaSubtypes.contains(.photoLive) {
-                if let livePhoto = livePhoto {
-                    LivePhotoViewWrapper(livePhoto: livePhoto)
-                        .scaledToFit()
+        // Falls das Asset als gelöscht markiert ist, wird nichts angezeigt.
+        if DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
+            Color.clear
+        } else {
+            ZStack(alignment: .topLeading) {
+                if asset.mediaSubtypes.contains(.photoLive) {
+                    if let livePhoto = livePhoto {
+                        LivePhotoViewWrapper(livePhoto: livePhoto)
+                            .scaledToFit()
+                    } else {
+                        Color.gray
+                    }
                 } else {
-                    Color.gray
-                }
-            } else {
-                if let cached = imageCache.cache[asset.localIdentifier] {
-                    Image(uiImage: cached)
-                        .resizable()
-                        .scaledToFit()
-                } else if let image = uiImage {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    Color.gray
+                    if let cached = imageCache.cache[asset.localIdentifier] {
+                        Image(uiImage: cached)
+                            .resizable()
+                            .scaledToFit()
+                    } else if let image = uiImage {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Color.gray
+                    }
                 }
             }
-            
-            
+            .onAppear { fetchAsset() }
         }
-        .onAppear { fetchAsset() }
     }
 
-    
-
-
     func fetchAsset() {
+        // Prüfen, ob das Asset als gelöscht markiert wurde.
+        if DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
+            return
+        }
+        
         // Verwende die native Auflösung des Assets für beste Qualität
         let targetSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
         
