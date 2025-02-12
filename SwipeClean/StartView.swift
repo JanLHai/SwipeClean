@@ -38,7 +38,7 @@ struct StartView: View {
                             .imageScale(.large)
                             .padding()
                             .accessibilityLabel(Text("settingsButton"))
-                    }
+                    }.navigationTitle("zurück")
                 }
             }
             .onAppear {
