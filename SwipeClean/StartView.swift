@@ -1,10 +1,3 @@
-//
-//  StartView.swift
-//  SwipeClean
-//
-//  Created by Jan Haider on 01.02.25.
-//
-
 import SwiftUI
 
 struct StartView: View {
@@ -16,11 +9,17 @@ struct StartView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                infoView
-                Spacer()
+            ZStack {
+                // Obere Inhalte bleiben oben
+                VStack {
+                    infoView
+                    Spacer()
+                }
+                // Navigation-Buttons sind unten verankert.
                 navigationButtons
-                Spacer()
+                    .padding(.horizontal)
+                    .padding(.bottom, 20) // Abstand zum unteren Rand (anpassbar)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
             }
             .padding(.top, 20)
             .navigationBarTitleDisplayMode(.inline)
@@ -60,6 +59,7 @@ struct StartView: View {
             Text("Freigeräumter Speicher: \(formattedFreedSpace(bytes: freedSpace))")
         }
         .padding([.top, .bottom], 120)
+        .opacity(0.75)
     }
     
     // Navigation-Buttons
@@ -90,8 +90,6 @@ struct StartView: View {
                     .buttonStyle(background: .gray.opacity(0.6))
             }
         }
-        .padding(.horizontal)
-        .padding(.top, 100)
     }
 }
 
