@@ -243,7 +243,6 @@ struct ContentView: View {
         if let album = album {
             let fetchResult = PHAsset.fetchAssets(in: album, options: fetchOptions)
             fetchResult.enumerateObjects { asset, _, _ in
-                // Beachte: Nun werden auch gelöschte Assets herausgefiltert!
                 if !DatabaseManager.shared.isAssetKeptRecently(assetID: asset.localIdentifier) &&
                     !DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
                     if let dateRange = dateRange {
@@ -272,6 +271,15 @@ struct ContentView: View {
                 }
             }
         }
+        
+        // Sortiere die Assets aufsteigend nach Datum:
+        // Nutzt creationDate, falls vorhanden, ansonsten modificationDate, sonst Date.distantPast.
+        fetchedAssets.sort { (asset1, asset2) -> Bool in
+            let date1 = asset1.creationDate ?? asset1.modificationDate ?? Date.distantPast
+            let date2 = asset2.creationDate ?? asset2.modificationDate ?? Date.distantPast
+            return date1 < date2
+        }
+        
         self.assets = fetchedAssets
     }
     
