@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SwipeClean
-//
-//  Created by Jan Haider on 01.02.25.
-//
-
 import SwiftUI
 import Photos
 import PhotosUI
@@ -215,7 +208,19 @@ struct ContentView: View {
             popToRoot()
         }) {
             ReviewDeletionView(assets: pendingDeletion) { assetsToDelete in
+                // Für die Assets, die gelöscht werden sollen:
+                for asset in assetsToDelete {
+                    let fileSize = asset.getFileSize()
+                    DatabaseManager.shared.deleteAsset(assetID: asset.localIdentifier, freedBytes: fileSize)
+                }
+                // Für die Assets, die beibehalten werden:
+                let keptAssets = pendingDeletion.filter { !assetsToDelete.contains($0) }
+                for asset in keptAssets {
+                    DatabaseManager.shared.saveAsset(assetID: asset.localIdentifier, date: Date())
+                }
+                // Führe die Batch-Löschung in der Fotobibliothek durch:
                 performBatchDeletion(for: assetsToDelete)
+                
                 pendingDeletion.removeAll()
                 showReview = false
             }
@@ -292,8 +297,7 @@ struct ContentView: View {
     
     func markCurrentImageForDeletion() {
         guard let currentAsset = assets.first else { return }
-        let fileSize = currentAsset.getFileSize()
-        DatabaseManager.shared.deleteAsset(assetID: currentAsset.localIdentifier, freedBytes: fileSize)
+        // Keine sofortige Löschung in der Datenbank, sondern nur in den Puffer aufnehmen.
         pendingDeletion.append(currentAsset)
         removeCurrentAsset()
     }
