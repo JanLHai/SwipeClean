@@ -19,7 +19,7 @@ struct SwipeCleanApp: App {
                     // Specify in which way the presented WhatsNew Versions are stored.
                     // zum entwikeln kann man diesen Modus verwenden InMemoryWhatsNewVersionStore
                     // In default the `UserDefaultsWhatsNewVersionStore` is used.
-                    versionStore: UserDefaultsWhatsNewVersionStore(),
+                    versionStore: InMemoryWhatsNewVersionStore(),
                     // Pass a `WhatsNewCollectionProvider` or an array of WhatsNew instances
                     whatsNewCollection: self
                 )
@@ -49,7 +49,12 @@ extension SwipeCleanApp: WhatsNewCollectionProvider {
                 WhatsNew.Feature(
                     image: .init(systemName: "play.rectangle"),
                     title: "Video Support",
-                    subtitle: "Wir können nun auch Videos abspielen"
+                    subtitle: "Sie könen nun auch Videos Ausmisten"
+                ),
+                WhatsNew.Feature(
+                    image: .init(systemName: "speaker.slash"),
+                    title: "Lautsärke Stummschalten",
+                    subtitle: "Sie können nun in den Einstellungen entscheiden ob Sie Töne stummschalten möchten"
                 ),
             ],
             

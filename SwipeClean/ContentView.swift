@@ -1,11 +1,12 @@
 import SwiftUI
 import Photos
 import PhotosUI
+import AVKit
 
 struct ContentView: View {
-    /// Optionales Album – falls gesetzt, werden nur dessen Bilder geladen.
+    /// Optionales Album – falls gesetzt, werden nur dessen Bilder/Videos geladen.
     let album: PHAssetCollection?
-    /// Optionaler Datumsfilter – nur Bilder, die innerhalb dieses Bereichs erstellt wurden.
+    /// Optionaler Datumsfilter – nur Bilder/Videos, die innerhalb dieses Bereichs erstellt wurden.
     let dateRange: DateRange?
     /// Optionaler Abschluss-Callback
     var onFinish: (() -> Void)? = nil
@@ -57,11 +58,17 @@ struct ContentView: View {
                     
                     if let currentAsset = assets.first {
                         ZStack {
-                            AssetImageView(asset: currentAsset, imageCache: imageCache)
-                                .clipShape(RoundedRectangle(cornerRadius: min(abs(totalTranslation) / 5, 40)))
+                            // Wenn es sich um ein Video handelt, verwende die neue AssetVideoView
+                            if currentAsset.mediaType == .video {
+                                AssetVideoView(asset: currentAsset, imageCache: imageCache)
+                                    .clipShape(RoundedRectangle(cornerRadius: min(abs(totalTranslation) / 5, 40)))
+                            } else {
+                                AssetImageView(asset: currentAsset, imageCache: imageCache)
+                                    .clipShape(RoundedRectangle(cornerRadius: min(abs(totalTranslation) / 5, 40)))
+                            }
                         }
                         .accessibilityElement()
-                        .accessibilityIdentifier("assetImageView")
+                        .accessibilityIdentifier("assetMediaView")
                         .accessibilityLabel(currentAsset.localIdentifier)
                         .id(currentAsset.localIdentifier)
                         .frame(width: geometry.size.width, height: geometry.size.height)
@@ -96,7 +103,7 @@ struct ContentView: View {
                     } else {
                         VStack {
                             Spacer()
-                            Text("Keine Bilder vorhanden")
+                            Text("Keine Medien vorhanden")
                                 .font(.headline)
                                 .foregroundColor(.gray)
                             Spacer()
@@ -261,7 +268,9 @@ struct ContentView: View {
                 }
             }
         } else {
-            let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+            // Laden von Bildern und Videos
+            fetchOptions.predicate = NSPredicate(format: "mediaType == %d OR mediaType == %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+            let fetchResult = PHAsset.fetchAssets(with: fetchOptions)
             fetchResult.enumerateObjects { asset, _, _ in
                 if !DatabaseManager.shared.isAssetKeptRecently(assetID: asset.localIdentifier) &&
                     !DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
@@ -278,7 +287,6 @@ struct ContentView: View {
         }
         
         // Sortiere die Assets aufsteigend nach Datum:
-        // Nutzt creationDate, falls vorhanden, ansonsten modificationDate, sonst Date.distantPast.
         fetchedAssets.sort { (asset1, asset2) -> Bool in
             let date1 = asset1.creationDate ?? asset1.modificationDate ?? Date.distantPast
             let date2 = asset2.creationDate ?? asset2.modificationDate ?? Date.distantPast
@@ -297,15 +305,12 @@ struct ContentView: View {
     
     func markCurrentImageForDeletion() {
         guard let currentAsset = assets.first else { return }
-        // Keine sofortige Löschung in der Datenbank, sondern nur in den Puffer aufnehmen.
         pendingDeletion.append(currentAsset)
         removeCurrentAsset()
     }
     
     func removeCurrentAsset() {
         if let currentAsset = assets.first {
-            // Nur aus dem Cache entfernen, wenn das Asset nicht als gelöscht markiert ist,
-            // da der SlideOver ggf. noch auf das Bild zugreift.
             if !DatabaseManager.shared.isAssetDeleted(assetID: currentAsset.localIdentifier) {
                 imageCache.cache.removeValue(forKey: currentAsset.localIdentifier)
             }

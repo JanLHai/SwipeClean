@@ -11,6 +11,9 @@
         }
       }
     },
+    "AssetVideoView Preview" : {
+
+    },
     "Aufräumen" : {
       "localizations" : {
         "en" : {
@@ -208,6 +211,7 @@
       }
     },
     "Keine Bilder vorhanden" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -216,6 +220,9 @@
           }
         }
       }
+    },
+    "Keine Medien vorhanden" : {
+
     },
     "Lade ältestes Datum..." : {
       "localizations" : {
@@ -256,6 +263,9 @@
           }
         }
       }
+    },
+    "Medien stummschalten" : {
+
     },
     "Ordner auswählen" : {
       "localizations" : {
