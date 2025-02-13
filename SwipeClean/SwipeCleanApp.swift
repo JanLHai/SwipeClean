@@ -36,7 +36,7 @@ extension SwipeCleanApp: WhatsNewCollectionProvider {
     var whatsNewCollection: WhatsNewCollection {
         WhatsNew(
             // The Version that relates to the features you want to showcase
-            version: "1.0.0",
+            version: "1.1.0",
             // The title that is shown at the top
             title: "Was ist neu in SwipeClean",
             // The features you want to showcase

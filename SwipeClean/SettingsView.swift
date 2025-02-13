@@ -81,15 +81,22 @@ struct SettingsView: View {
                             }) {
                                 Text("Supportanfrage")
                             }
-                        }
-                        
-                        Section("Information") {
                             Button(action: {
                                 if let url = URL(string: "https://swipeclean.jan-haider.dev/PrivacyPolice.html") {
                                     UIApplication.shared.open(url)
                                 }
                             }) {
                                 Text("Privacy Policy")
+                            }
+                        }
+                        
+                        Section("Developer") {
+                            Text("Entwickelt von: Jan Haider")
+                            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                               let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                                Text("Version \(version) (Build \(build))").font(.subheadline)
+                            } else {
+                                Text("Version nicht verfügbar").font(.subheadline)
                             }
                         }
                     }
