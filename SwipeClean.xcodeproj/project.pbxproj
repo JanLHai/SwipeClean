@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F15EB162D5E7F130037E0CB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5F15EB152D5E7F130037E0CB /* Localizable.xcstrings */; };
+		5F15EB1B2D5E987F0037E0CB /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5F15EB1A2D5E987F0037E0CB /* WhatsNewKit */; };
+		5F15EB1E2D5E98B10037E0CB /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5F15EB1D2D5E98B10037E0CB /* OnboardingKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F15EB1E2D5E98B10037E0CB /* OnboardingKit in Frameworks */,
+				5F15EB1B2D5E987F0037E0CB /* WhatsNewKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +135,8 @@
 			);
 			name = SwipeClean;
 			packageProductDependencies = (
+				5F15EB1A2D5E987F0037E0CB /* WhatsNewKit */,
+				5F15EB1D2D5E98B10037E0CB /* OnboardingKit */,
 			);
 			productName = SwipeClean;
 			productReference = 5FB6F4162D3855F0001EB8EC /* SwipeClean.app */;
@@ -216,6 +222,8 @@
 			mainGroup = 5FB6F40D2D3855F0001EB8EC;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				5F15EB192D5E987F0037E0CB /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
+				5F15EB1C2D5E98B10037E0CB /* XCRemoteSwiftPackageReference "OnboardingKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5FB6F4172D3855F0001EB8EC /* Products */;
@@ -632,6 +640,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F15EB192D5E987F0037E0CB /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
+		5F15EB1C2D5E98B10037E0CB /* XCRemoteSwiftPackageReference "OnboardingKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/OnboardingKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F15EB1A2D5E987F0037E0CB /* WhatsNewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F15EB192D5E987F0037E0CB /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
+			productName = WhatsNewKit;
+		};
+		5F15EB1D2D5E98B10037E0CB /* OnboardingKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F15EB1C2D5E98B10037E0CB /* XCRemoteSwiftPackageReference "OnboardingKit" */;
+			productName = OnboardingKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5FB6F40E2D3855F0001EB8EC /* Project object */;
 }

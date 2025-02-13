@@ -1,4 +1,5 @@
 import SwiftUI
+import WhatsNewKit
 
 struct StartView: View {
     
@@ -6,6 +7,8 @@ struct StartView: View {
     @State private var keptCount: Int = DatabaseManager.shared.keptImagesCount
     @State private var deletedCount: Int = DatabaseManager.shared.deletedCount
     @State private var freedSpace: Int64 = DatabaseManager.shared.freedSpace
+    
+
     
     var body: some View {
         NavigationView {
@@ -20,6 +23,7 @@ struct StartView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 20) // Abstand zum unteren Rand (anpassbar)
                     .frame(maxHeight: .infinity, alignment: .bottom)
+                    .whatsNewSheet()
             }
             .padding(.top, 20)
             .navigationBarTitleDisplayMode(.inline)

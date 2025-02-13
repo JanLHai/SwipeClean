@@ -1,0 +1,24 @@
+{
+  "originHash" : "750f2f10caffa01e2dec6fe08f33b4f3e4484761128aac67065230cead743f7d",
+  "pins" : [
+    {
+      "identity" : "onboardingkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/OnboardingKit.git",
+      "state" : {
+        "revision" : "fb1f732f5a148fab6f89e9ec7c3bdc2f7b97d0c6",
+        "version" : "8.1.0"
+      }
+    },
+    {
+      "identity" : "whatsnewkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SvenTiigi/WhatsNewKit",
+      "state" : {
+        "revision" : "6157c77e8be9b3d2310bc680681b61a8d9e290ac",
+        "version" : "2.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}
