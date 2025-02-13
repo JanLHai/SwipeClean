@@ -12,6 +12,7 @@ import SwiftUI
 struct SettingsView: View {
     @State private var showConfirmation = false
     @State private var showSlideOver = false
+    @AppStorage("mediaMuted") var mediaMuted: Bool = false  // Neuer Toggle für "Medien stummschalten"
 
     init() {
         // Setze den Hintergrund der UITableView und ihrer Zellen für diese View
@@ -41,6 +42,10 @@ struct SettingsView: View {
                     // Formular mit den übrigen Elementen
                     Form {
                         Section("Einstellungen") {
+                            // Toggle zum Stummschalten der Medien
+                            Toggle("Medien stummschalten", isOn: $mediaMuted)
+                                .accessibilityIdentifier("toggleMediaMuted")
+                            
                             Button(action: {
                                 // Popup zur Bestätigung anzeigen
                                 showConfirmation = true
