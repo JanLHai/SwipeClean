@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5F15EB162D5E7F130037E0CB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5F15EB152D5E7F130037E0CB /* Localizable.xcstrings */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5FB6F42A2D3855F1001EB8EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F15EB152D5E7F130037E0CB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5FB6F4162D3855F0001EB8EC /* SwipeClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB6F4292D3855F1001EB8EC /* SwipeCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB6F4332D3855F1001EB8EC /* SwipeCleanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +93,7 @@
 		5FB6F40D2D3855F0001EB8EC = {
 			isa = PBXGroup;
 			children = (
+				5F15EB152D5E7F130037E0CB /* Localizable.xcstrings */,
 				5FB6F4182D3855F0001EB8EC /* SwipeClean */,
 				5FB6F42C2D3855F1001EB8EC /* SwipeCleanTests */,
 				5FB6F4362D3855F1001EB8EC /* SwipeCleanUITests */,
@@ -200,11 +206,12 @@
 				};
 			};
 			buildConfigurationList = 5FB6F4112D3855F0001EB8EC /* Build configuration list for PBXProject "SwipeClean" */;
-			developmentRegion = en;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 5FB6F40D2D3855F0001EB8EC;
 			minimizedProjectReferenceProxies = 1;
@@ -227,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F15EB162D5E7F130037E0CB /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +349,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -395,6 +404,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
