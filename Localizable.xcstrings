@@ -11,9 +11,6 @@
         }
       }
     },
-    "AssetVideoView Preview" : {
-
-    },
     "Aufräumen" : {
       "localizations" : {
         "en" : {
@@ -120,12 +117,32 @@
         }
       }
     },
+    "Developer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developrt"
+          }
+        }
+      }
+    },
     "Einstellungen" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Entwickelt von: Jan Haider" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developed by: Jan Haider"
           }
         }
       }
@@ -180,16 +197,6 @@
         }
       }
     },
-    "Information" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Information"
-          }
-        }
-      }
-    },
     "Kein Bild" : {
       "localizations" : {
         "en" : {
@@ -210,19 +217,15 @@
         }
       }
     },
-    "Keine Bilder vorhanden" : {
-      "extractionState" : "stale",
+    "Keine Medien vorhanden" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No images available"
+            "value" : "No media available"
           }
         }
       }
-    },
-    "Keine Medien vorhanden" : {
-
     },
     "Lade ältestes Datum..." : {
       "localizations" : {
@@ -265,7 +268,14 @@
       }
     },
     "Medien stummschalten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mute media"
+          }
+        }
+      }
     },
     "Ordner auswählen" : {
       "localizations" : {
@@ -313,6 +323,32 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "SwipeClean"
+          }
+        }
+      }
+    },
+    "Version %@ (Build %@)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version %1$@ (Build %2$@)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %1$@ (Build %2$@)"
+          }
+        }
+      }
+    },
+    "Version nicht verfügbar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version not available"
           }
         }
       }
