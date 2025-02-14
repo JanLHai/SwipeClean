@@ -10,6 +10,8 @@
 		5F15EB162D5E7F130037E0CB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5F15EB152D5E7F130037E0CB /* Localizable.xcstrings */; };
 		5F15EB1B2D5E987F0037E0CB /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5F15EB1A2D5E987F0037E0CB /* WhatsNewKit */; };
 		5F15EB1E2D5E98B10037E0CB /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5F15EB1D2D5E98B10037E0CB /* OnboardingKit */; };
+		5F15EC1E2D5FF34E0037E0CB /* ImageRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15EC1D2D5FF34E0037E0CB /* ImageRecord+CoreDataProperties.swift */; };
+		5F15EC1F2D5FF34E0037E0CB /* ImageRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15EC1C2D5FF34E0037E0CB /* ImageRecord+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		5F15EB152D5E7F130037E0CB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5F15EC1C2D5FF34E0037E0CB /* ImageRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5F15EC1D2D5FF34E0037E0CB /* ImageRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5FB6F4162D3855F0001EB8EC /* SwipeClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB6F4292D3855F1001EB8EC /* SwipeCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB6F4332D3855F1001EB8EC /* SwipeCleanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,8 @@
 		5FB6F40D2D3855F0001EB8EC = {
 			isa = PBXGroup;
 			children = (
+				5F15EC1C2D5FF34E0037E0CB /* ImageRecord+CoreDataClass.swift */,
+				5F15EC1D2D5FF34E0037E0CB /* ImageRecord+CoreDataProperties.swift */,
 				5F15EB152D5E7F130037E0CB /* Localizable.xcstrings */,
 				5FB6F4182D3855F0001EB8EC /* SwipeClean */,
 				5FB6F42C2D3855F1001EB8EC /* SwipeCleanTests */,
@@ -267,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F15EC1E2D5FF34E0037E0CB /* ImageRecord+CoreDataProperties.swift in Sources */,
+				5F15EC1F2D5FF34E0037E0CB /* ImageRecord+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
