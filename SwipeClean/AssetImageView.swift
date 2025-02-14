@@ -19,7 +19,7 @@ struct AssetImageView: View {
                 if asset.mediaSubtypes.contains(.photoLive) {
                     if let livePhoto = livePhoto {
                         LivePhotoViewWrapper(livePhoto: livePhoto)
-                            .scaledToFit()
+                            .scaledToFill()
                     } else {
                         Color.gray
                     }
