@@ -60,12 +60,12 @@ struct AssetVideoView: View {
     let asset: PHAsset
     @ObservedObject var imageCache: ImageCache
     @AppStorage("mediaMuted") var mediaMuted: Bool = false
-
+    
     @State private var thumbnail: UIImage? = nil
     @State private var isLoadingVideo = false
     @State private var player: AVPlayer? = nil
     @State private var isPlaying = false
-
+    
     var body: some View {
         ZStack {
             if isPlaying, let player = player {
@@ -103,6 +103,17 @@ struct AssetVideoView: View {
         }
     }
     
+    func togglePlayPause() {
+        guard let player = player else { return }
+        if player.timeControlStatus == .playing {
+            player.pause()
+            isPlaying = false
+        } else {
+            player.play()
+            isPlaying = true
+        }
+    }
+    
     func fetchThumbnail() {
         // Wenn bereits ein Thumbnail im Cache vorhanden ist, verwenden wir es.
         if let cached = imageCache.cache[asset.localIdentifier] {
@@ -113,8 +124,8 @@ struct AssetVideoView: View {
         }
         
         let targetSize: CGSize = (asset.mediaType == .video)
-            ? CGSize(width: 400, height: 300)
-            : CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
+        ? CGSize(width: 400, height: 300)
+        : CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
         
         let options = PHImageRequestOptions()
         options.deliveryMode = .fastFormat
@@ -168,6 +179,7 @@ struct AssetVideoView: View {
             player.play()
             return
         }
+        
         isLoadingVideo = true
         let options = PHVideoRequestOptions()
         options.deliveryMode = .highQualityFormat
@@ -180,16 +192,32 @@ struct AssetVideoView: View {
                     let playerItem = AVPlayerItem(asset: avAsset)
                     self.player = AVPlayer(playerItem: playerItem)
                     self.player?.isMuted = self.mediaMuted
+                    
+                    // Konfiguriere die Audio-Session entsprechend des Stummmodus:
+                    let audioSession = AVAudioSession.sharedInstance()
+                    do {
+                        if self.mediaMuted {
+                            // Mit .ambient (oder alternativ .playback mit mixWithOthers) werden andere Medien nicht unterbrochen.
+                            try audioSession.setCategory(.ambient, mode: .moviePlayback, options: [])
+                        } else {
+                            // Normale Wiedergabe – andere Medien werden ggf. pausiert.
+                            try audioSession.setCategory(.ambient, mode: .moviePlayback, options: [])
+                        }
+                        try audioSession.setActive(true)
+                    } catch {
+                        print("Fehler beim Konfigurieren der Audio-Session: \(error)")
+                    }
+                    
                     self.isPlaying = true
                     self.player?.play()
                 }
             }
         }
     }
-}
-
-struct AssetVideoView_Previews: PreviewProvider {
-    static var previews: some View {
-        Text("AssetVideoView Preview")
+    
+    struct AssetVideoView_Previews: PreviewProvider {
+        static var previews: some View {
+            Text("AssetVideoView Preview")
+        }
     }
 }
