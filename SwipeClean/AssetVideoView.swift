@@ -68,27 +68,45 @@ struct AssetVideoView: View {
     
     var body: some View {
         ZStack {
-            if isPlaying, let player = player {
-                TransparentVideoPlayer(player: player)
-                    .onDisappear {
-                        player.pause()
+            // Falls der Player bereits initialisiert wurde, zeigen wir diesen immer an
+            if let player = player {
+                ZStack {
+                    TransparentVideoPlayer(player: player)
+                        .onTapGesture {
+                            togglePlayPause()
+                        }
+                        .onDisappear {
+                            player.pause()
+                        }
+                    
+                    // Overlay-Play-Button anzeigen, wenn das Video pausiert ist
+                    if !isPlaying {
+                        Image(systemName: "play.circle.fill")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.white)
+                            .opacity(0.8)
                     }
-            } else {
-                if let thumbnail = thumbnail {
-                    Image(uiImage: thumbnail)
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    Color.gray
                 }
-                Button(action: {
-                    playVideo()
-                }) {
-                    Image(systemName: "play.circle.fill")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .foregroundColor(.white)
-                        .opacity(0.8)
+            } else {
+                // Zeige Thumbnail, falls kein Player existiert
+                ZStack {
+                    if let thumbnail = thumbnail {
+                        Image(uiImage: thumbnail)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Color.gray
+                    }
+                    Button(action: {
+                        playVideo()
+                    }) {
+                        Image(systemName: "play.circle.fill")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.white)
+                            .opacity(0.8)
+                    }
                 }
             }
             
