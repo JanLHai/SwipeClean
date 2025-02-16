@@ -1,17 +1,6 @@
 {
   "sourceLanguage" : "de",
   "strings" : {
-    "Abbrechen" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        }
-      }
-    },
     "Aufräumen" : {
       "localizations" : {
         "en" : {
@@ -63,7 +52,14 @@
       }
     },
     "Bilder" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Images"
+          }
+        }
+      }
     },
     "Bis:" : {
       "localizations" : {
@@ -75,33 +71,32 @@
         }
       }
     },
-    "Bist du dir sicher, dass du die Datenbank löschen möchtest?" : {
-      "extractionState" : "stale",
+    "Bist du dir sicher, dass du die lokale und Cloud-Datenbank zurücksetzen möchtest?" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Are you sure you want to delete the database?"
+            "value" : "Are you sure you want to reset the local and cloud database?"
           }
         }
       }
     },
-    "Bist du dir sicher, dass du die lokale und Cloud-Datenbank zurücksetzen möchtest?" : {
-
-    },
     "CloudKit Synchronisierung" : {
-
-    },
-    "CloudKit Synchronisierung aktivieren" : {
-
-    },
-    "Datenbank löschen" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete database"
+            "value" : "CloudKit Synchronization"
+          }
+        }
+      }
+    },
+    "CloudKit Synchronisierung aktivieren" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable CloudKit Synchronization"
           }
         }
       }
@@ -253,7 +248,20 @@
       }
     },
     "LivePhotos" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Photos"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Photos"
+          }
+        }
+      }
     },
     "Löschbestätigung" : {
       "localizations" : {
@@ -286,7 +294,14 @@
       }
     },
     "Manuell synchronisieren" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync manually"
+          }
+        }
+      }
     },
     "Medien stummschalten" : {
       "localizations" : {
@@ -299,7 +314,14 @@
       }
     },
     "Medientyp wählen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select media type"
+          }
+        }
+      }
     },
     "Ordner auswählen" : {
       "localizations" : {
@@ -378,7 +400,14 @@
       }
     },
     "Videos" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Videos"
+          }
+        }
+      }
     },
     "Von:" : {
       "localizations" : {
