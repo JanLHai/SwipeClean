@@ -4,6 +4,7 @@
 //
 //  Created by Jan Haider on 01.02.25.
 //
+
 import Foundation
 import Photos
 
@@ -52,6 +53,12 @@ class DatabaseManager {
             return Date().timeIntervalSince(savedDate) < cooldown
         }
         return false
+    }
+    
+    /// Neue Methode: Prüft, ob eine Asset-ID bereits als behalten markiert wurde.
+    func isAssetKept(assetID: String) -> Bool {
+        let isKept = keptImages[assetID] != nil
+        return isKept
     }
     
     func deleteAsset(assetID: String, freedBytes: Int64) {
@@ -104,5 +111,42 @@ class DatabaseManager {
     func removeKeptAsset(assetID: String) {
         keptImages.removeValue(forKey: assetID)
         UserDefaults.standard.set(keptImages, forKey: userDefaultsKey)
+    }
+    
+    // Getter- und Setter-Methoden für den iCloud-Sync
+    func getKeptImages() -> [String: TimeInterval] {
+        return keptImages
+    }
+    
+    func setKeptImages(_ images: [String: TimeInterval]) {
+        keptImages = images
+        UserDefaults.standard.set(keptImages, forKey: userDefaultsKey)
+    }
+    
+    func getDeletedImages() -> Set<String> {
+        return deletedImages
+    }
+    
+    func setDeletedImages(_ images: Set<String>) {
+        deletedImages = images
+        UserDefaults.standard.set(Array(deletedImages), forKey: deletedImagesKey)
+    }
+    
+    func getDeletedCount() -> Int {
+        return deletedCount
+    }
+    
+    func setDeletedCount(_ count: Int) {
+        deletedCount = count
+        UserDefaults.standard.set(deletedCount, forKey: deletedCountKey)
+    }
+    
+    func getFreedSpace() -> Int64 {
+        return freedSpace
+    }
+    
+    func setFreedSpace(_ space: Int64) {
+        freedSpace = space
+        UserDefaults.standard.set(NSNumber(value: freedSpace), forKey: freedSpaceKey)
     }
 }

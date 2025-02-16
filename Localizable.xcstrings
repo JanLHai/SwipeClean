@@ -2,6 +2,7 @@
   "sourceLanguage" : "de",
   "strings" : {
     "Abbrechen" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -61,6 +62,9 @@
         }
       }
     },
+    "Bilder" : {
+
+    },
     "Bis:" : {
       "localizations" : {
         "en" : {
@@ -72,6 +76,7 @@
       }
     },
     "Bist du dir sicher, dass du die Datenbank löschen möchtest?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -81,7 +86,17 @@
         }
       }
     },
+    "Bist du dir sicher, dass du die lokale und Cloud-Datenbank zurücksetzen möchtest?" : {
+
+    },
+    "CloudKit Synchronisierung" : {
+
+    },
+    "CloudKit Synchronisierung aktivieren" : {
+
+    },
     "Datenbank löschen" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -237,6 +252,9 @@
         }
       }
     },
+    "LivePhotos" : {
+
+    },
     "Löschbestätigung" : {
       "localizations" : {
         "en" : {
@@ -267,6 +285,9 @@
         }
       }
     },
+    "Manuell synchronisieren" : {
+
+    },
     "Medien stummschalten" : {
       "localizations" : {
         "en" : {
@@ -276,6 +297,9 @@
           }
         }
       }
+    },
+    "Medientyp wählen" : {
+
     },
     "Ordner auswählen" : {
       "localizations" : {
@@ -352,6 +376,9 @@
           }
         }
       }
+    },
+    "Videos" : {
+
     },
     "Von:" : {
       "localizations" : {

@@ -21,47 +21,61 @@ struct DateRangeSelectionView: View {
     @State private var navigateToContentView: Bool = false
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Zeitraum auswählen")
-                .font(.title)
-                .padding()
-            
+        ZStack {
+            // Zentraler Bereich: Datumsauswahl
             if isLoading {
                 ProgressView("Lade ältestes Datum...")
+                    .offset(y: -50) // Offset auch beim ProgressView, falls gewünscht
             } else {
-                Form {
-                    DatePicker("Von:", selection: $startDate, displayedComponents: .date)
-                    DatePicker("Bis:", selection: $endDate, in: startDate...Date(), displayedComponents: .date)
+                VStack {
+                    Spacer()
+                    VStack(spacing: 20) {
+                        DatePicker("Von:", selection: $startDate, displayedComponents: .date)
+                            .datePickerStyle(.compact)
+                        DatePicker("Bis:", selection: $endDate, in: startDate...Date(), displayedComponents: .date)
+                            .datePickerStyle(.compact)
+                    }
+                    .padding(.horizontal)
+                    Spacer()
                 }
+                .offset(y: -50) // Verschiebt die Datumsauswahl nach oben
             }
             
-            // Unsichtbarer NavigationLink, der beim Bestätigen aktiviert wird
-            NavigationLink(
-                destination: ContentView(album: nil, dateRange: DateRange(start: startDate, end: endDate))
+            // Button-Bereich am unteren Bildschirmrand
+            VStack {
+                Spacer()
+                
+                // Unsichtbarer NavigationLink
+                NavigationLink(
+                    destination: ContentView(
+                        album: nil,
+                        dateRange: DateRange(start: startDate, end: endDate),
+                        mediaTypeFilter: nil
+                    )
                     .navigationBarBackButtonHidden(true)
                     .navigationBarHidden(false),
-                isActive: $navigateToContentView
-            ) {
-                EmptyView()
-            }
-            
-            Button(action: {
-                if startDate <= endDate {
-                    navigateToContentView = true
+                    isActive: $navigateToContentView
+                ) {
+                    EmptyView()
                 }
-            }) {
-                Text("Bestätigen")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background((startDate <= endDate) ? Color.blue : Color.gray)
-                    .cornerRadius(10)
+                
+                Button(action: {
+                    if startDate <= endDate {
+                        navigateToContentView = true
+                    }
+                }) {
+                    Text("Bestätigen")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background((startDate <= endDate) ? Color.blue : Color.gray)
+                        .cornerRadius(10)
+                }
+                .disabled(startDate > endDate || isLoading)
+                .padding(.horizontal)
+                .padding(.bottom, 20)
             }
-            .disabled(startDate > endDate || isLoading)
-            .padding()
-            
-            Spacer()
         }
         .onAppear(perform: fetchOldestDate)
         .navigationBarTitle("Zeitraum auswählen", displayMode: .inline)

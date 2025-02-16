@@ -7,24 +7,41 @@
 
 import SwiftUICore
 import SwiftUI
-//import MyFeedbackLibrary
 
 struct SettingsView: View {
-    @State private var showConfirmation = false
+    @State private var showResetConfirmation = false
     @State private var showSlideOver = false
-    @AppStorage("mediaMuted") var mediaMuted: Bool = false  // Neuer Toggle für "Medien stummschalten"
+    @AppStorage("mediaMuted") var mediaMuted: Bool = false  // Toggle für "Medien stummschalten"
+    @AppStorage("iCloudSyncEnabled") var iCloudSyncEnabled: Bool = false
+
+    // Verwende CloudKitSyncManager als Sync-Manager
+    @StateObject private var syncManager: CloudKitSyncManager
 
     init() {
+        _syncManager = StateObject(wrappedValue: CloudKitSyncManager.shared)
         // Setze den Hintergrund der UITableView und ihrer Zellen für diese View
         UITableView.appearance().backgroundColor = UIColor.systemGroupedBackground
         UITableViewCell.appearance().backgroundColor = UIColor.systemGroupedBackground
     }
     
+    private var syncStatusText: String {
+        return syncManager.syncStatus
+    }
+    
+    private var syncIcon: String {
+        if syncStatusText.contains("Synchronisiere") {
+            return "icloud.and.arrow.up"
+        } else if syncStatusText.contains("Synchronisiert") {
+            return "icloud"
+        } else {
+            return "exclamationmark.icloud"
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
-                Color(UIColor.systemGroupedBackground)
-                    .ignoresSafeArea(.all)
+                Color(UIColor.systemGroupedBackground).ignoresSafeArea()
                 VStack(spacing: 25) {
                     // Oberer Header mit Icon und Titel
                     VStack {
@@ -39,40 +56,61 @@ struct SettingsView: View {
                             .padding(.top, 8)
                     }
                     
-                    // Formular mit den übrigen Elementen
                     Form {
                         Section("Einstellungen") {
-                            // Toggle zum Stummschalten der Medien
                             Toggle("Medien stummschalten", isOn: $mediaMuted)
                                 .accessibilityIdentifier("toggleMediaMuted")
                             
                             Button(action: {
-                                // Popup zur Bestätigung anzeigen
-                                showConfirmation = true
+                                showResetConfirmation = true
                             }) {
                                 Text("Datenbank Zurücksetzen")
                                     .foregroundColor(.red)
                             }
-                            .alert(isPresented: $showConfirmation) {
+                            .accessibilityLabel("Datenbank zurücksetzen")
+                            .alert(isPresented: $showResetConfirmation) {
                                 Alert(
                                     title: Text("Datenbank zurücksetzen"),
-                                    message: Text("Bist du dir sicher, dass du die Datenbank löschen möchtest?"),
-                                    primaryButton: .destructive(Text("Löschen"), action: {
+                                    message: Text("Bist du dir sicher, dass du die lokale und Cloud-Datenbank zurücksetzen möchtest?"),
+                                    primaryButton: .destructive(Text("Zurücksetzen"), action: {
                                         DatabaseManager.shared.resetDatabase()
+                                        syncManager.resetCloudDatabase { _ in }
                                         withAnimation {
                                             showSlideOver = true
                                         }
-                                        // SlideOver nach 3 Sekunden wieder ausblenden
+                                        // SlideOver nach kurzer Zeit ausblenden
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                            withAnimation {
-                                                showSlideOver = false
-                                            }
+                                            withAnimation { showSlideOver = false }
                                         }
                                     }),
-                                    secondaryButton: .cancel(Text("Abbrechen"))
+                                    secondaryButton: .cancel()
                                 )
                             }
-                            .accessibilityLabel("Datenbank zurücksetzen")
+                        }
+                        
+                        // Abschnitt für CloudKit Synchronisierung mit manuellem Sync-Button
+                        Section("CloudKit Synchronisierung") {
+                            Toggle("CloudKit Synchronisierung aktivieren", isOn: $iCloudSyncEnabled)
+                                .accessibilityIdentifier("toggleICloudSyncEnabled")
+                            
+                            HStack {
+                                Image(systemName: syncIcon)
+                                    .foregroundColor(.blue)
+                                Text(syncStatusText)
+                            }
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                            
+                            // Button zum manuellen Auslösen der Synchronisierung
+                            Button(action: {
+                                syncManager.syncData()
+                            }) {
+                                HStack {
+                                    Image(systemName: "arrow.clockwise")
+                                    Text("Manuell synchronisieren")
+                                }
+                            }
+                            .padding(.vertical, 4)
                         }
                         
                         Section("Hilfe") {
@@ -100,14 +138,12 @@ struct SettingsView: View {
                             }
                         }
                     }
-                    // Entferne den Standard-Hintergrund der Form
                     .scrollContentBackground(.hidden)
                     .background(Color(UIColor.systemGroupedBackground))
                 }
                 
-                // SlideOver-Nachricht
                 if showSlideOver {
-                    SlideOverView(message: "Datenbank wurde gelöscht")
+                    SlideOverView(message: "Datenbank wurde zurückgesetzt")
                         .transition(.move(edge: .trailing))
                         .zIndex(1)
                         .accessibilityIdentifier("slideOverMessage")
@@ -143,10 +179,8 @@ func openEmail() {
     let email = "support.SwipeClean@jan-haider.dev"
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unbekannt"
     let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unbekannt"
-
     let subject = "Support SwipeClean - App Version \(appVersion) (Build \(buildNumber))"
     let body = "Bitte tragen Sie hier ihre Probleme oder fragen ein:\n\n\n"
-
     if let emailURL = URL(string: "mailto:\(email)?subject=\(subject)&body=\(body)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
         if UIApplication.shared.canOpenURL(emailURL) {
             UIApplication.shared.open(emailURL)

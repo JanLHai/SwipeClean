@@ -1,3 +1,10 @@
+//
+//  GalleryFoldersView.swift
+//  SwipeClean
+//
+//  Created by Jan Haider on [Datum].
+//
+
 import SwiftUI
 import Photos
 
@@ -120,13 +127,12 @@ struct GalleryFoldersView: View {
     @ViewBuilder
     private func destinationView(for album: Album) -> some View {
         // Hier wird die ContentView mit dem Album als Parameter aufgerufen.
-        ContentView(album: album.assetCollection, dateRange: nil)
+        ContentView(album: album.assetCollection, dateRange: nil, mediaTypeFilter: nil)
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(false)
     }
 }
 
-// Preview
 struct GalleryFoldersView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
