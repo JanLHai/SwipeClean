@@ -64,7 +64,7 @@ struct SettingsView: View {
                             Button(action: {
                                 showResetConfirmation = true
                             }) {
-                                Text("Datenbank Zurücksetzen")
+                                Text("Datenbank zurücksetzen")
                                     .foregroundColor(.red)
                             }
                             .accessibilityLabel("Datenbank zurücksetzen")

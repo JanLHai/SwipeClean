@@ -132,7 +132,7 @@ struct ContentView: View {
                     Button(action: {
                         showResetConfirmation = true
                     }) {
-                        Text("Datenbank Zurücksetzen")
+                        Text("Datenbank zurücksetzen")
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
