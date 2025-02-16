@@ -40,10 +40,9 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color(UIColor.systemGroupedBackground).ignoresSafeArea()
-                VStack(spacing: 25) {
-                    // Oberer Header mit Icon und Titel
+            Form {
+                // Header als erste Zeile im Form – scrollt mit
+                Section {
                     VStack {
                         Image("SwipeClean-Icon_Light")
                             .resizable()
@@ -55,101 +54,110 @@ struct SettingsView: View {
                             .font(.largeTitle)
                             .padding(.top, 8)
                     }
-                    
-                    Form {
-                        Section("Einstellungen") {
-                            Toggle("Medien stummschalten", isOn: $mediaMuted)
-                                .accessibilityIdentifier("toggleMediaMuted")
-                            
-                            Button(action: {
-                                showResetConfirmation = true
-                            }) {
-                                Text("Datenbank zurücksetzen")
-                                    .foregroundColor(.red)
-                            }
-                            .accessibilityLabel("Datenbank zurücksetzen")
-                            .alert(isPresented: $showResetConfirmation) {
-                                Alert(
-                                    title: Text("Datenbank zurücksetzen"),
-                                    message: Text("Bist du dir sicher, dass du die lokale und Cloud-Datenbank zurücksetzen möchtest?"),
-                                    primaryButton: .destructive(Text("Zurücksetzen"), action: {
-                                        DatabaseManager.shared.resetDatabase()
-                                        syncManager.resetCloudDatabase { _ in }
-                                        withAnimation {
-                                            showSlideOver = true
-                                        }
-                                        // SlideOver nach kurzer Zeit ausblenden
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                            withAnimation { showSlideOver = false }
-                                        }
-                                    }),
-                                    secondaryButton: .cancel()
-                                )
-                            }
-                        }
-                        
-                        // Abschnitt für CloudKit Synchronisierung mit manuellem Sync-Button
-                        Section("CloudKit Synchronisierung") {
-                            Toggle("CloudKit Synchronisierung aktivieren", isOn: $iCloudSyncEnabled)
-                                .accessibilityIdentifier("toggleICloudSyncEnabled")
-                            
-                            HStack {
-                                Image(systemName: syncIcon)
-                                    .foregroundColor(.blue)
-                                Text(syncStatusText)
-                            }
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                            
-                            // Button zum manuellen Auslösen der Synchronisierung
-                            Button(action: {
-                                syncManager.syncData()
-                            }) {
-                                HStack {
-                                    Image(systemName: "arrow.clockwise")
-                                    Text("Manuell synchronisieren")
-                                }
-                            }
-                            .padding(.vertical, 4)
-                        }
-                        
-                        Section("Hilfe") {
-                            Button(action: {
-                                openEmail()
-                            }) {
-                                Text("Supportanfrage")
-                            }
-                            Button(action: {
-                                if let url = URL(string: "https://swipeclean.jan-haider.dev/PrivacyPolice.html") {
-                                    UIApplication.shared.open(url)
-                                }
-                            }) {
-                                Text("Privacy Policy")
-                            }
-                        }
-                        
-                        Section("Developer") {
-                            Text("Entwickelt von: Jan Haider")
-                            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-                               let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                                Text("Version \(version) (Build \(build))").font(.subheadline)
-                            } else {
-                                Text("Version nicht verfügbar").font(.subheadline)
-                            }
-                        }
-                    }
-                    .scrollContentBackground(.hidden)
+                    .frame(maxWidth: .infinity)
                     .background(Color(UIColor.systemGroupedBackground))
+
+                }
+                .listRowInsets(EdgeInsets()) // Nutzt den gesamten Platz
+
+                // Einstellungen
+                Section("Einstellungen") {
+                    Toggle("Medien stummschalten", isOn: $mediaMuted)
+                        .accessibilityIdentifier("toggleMediaMuted")
+                    
+                    Button(action: {
+                        showResetConfirmation = true
+                    }) {
+                        Text("Datenbank zurücksetzen")
+                            .foregroundColor(.red)
+                    }
+                    .accessibilityLabel("Datenbank zurücksetzen")
+                    .alert(isPresented: $showResetConfirmation) {
+                        Alert(
+                            title: Text("Datenbank zurücksetzen"),
+                            message: Text("Bist du dir sicher, dass du die lokale und Cloud-Datenbank zurücksetzen möchtest?"),
+                            primaryButton: .destructive(Text("Zurücksetzen"), action: {
+                                DatabaseManager.shared.resetDatabase()
+                                syncManager.resetCloudDatabase { _ in }
+                                withAnimation {
+                                    showSlideOver = true
+                                }
+                                // SlideOver nach kurzer Zeit ausblenden
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    withAnimation { showSlideOver = false }
+                                }
+                            }),
+                            secondaryButton: .cancel()
+                        )
+                    }
                 }
                 
-                if showSlideOver {
-                    SlideOverView(message: "Datenbank wurde zurückgesetzt")
-                        .transition(.move(edge: .trailing))
-                        .zIndex(1)
-                        .accessibilityIdentifier("slideOverMessage")
+                // CloudKit Synchronisierung
+                Section("CloudKit Synchronisierung") {
+                    Toggle("CloudKit Synchronisierung aktivieren", isOn: $iCloudSyncEnabled)
+                        .accessibilityIdentifier("toggleICloudSyncEnabled")
+                    
+                    HStack {
+                        Image(systemName: syncIcon)
+                            .foregroundColor(.blue)
+                        Text(syncStatusText)
+                    }
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    
+                    // Button zum manuellen Auslösen der Synchronisierung
+                    Button(action: {
+                        syncManager.syncData()
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                            Text("Manuell synchronisieren")
+                        }
+                    }
+                    .padding(.vertical, 4)
+                }
+                
+                // Hilfe
+                Section("Hilfe") {
+                    Button(action: {
+                        openEmail()
+                    }) {
+                        Text("Supportanfrage")
+                    }
+                    Button(action: {
+                        if let url = URL(string: "https://swipeclean.jan-haider.dev/PrivacyPolice.html") {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        Text("Privacy Policy")
+                    }
+                }
+                
+                // Developer
+                Section("Developer") {
+                    Text("Entwickelt von: Jan Haider")
+                    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                       let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                        Text("Version \(version) (Build \(build))").font(.subheadline)
+                    } else {
+                        Text("Version nicht verfügbar").font(.subheadline)
+                    }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(Color(UIColor.systemGroupedBackground))
             .navigationBarTitleDisplayMode(.inline)
+            // SlideOver bleibt im ZStack außerhalb der Form
+            .overlay(
+                Group {
+                    if showSlideOver {
+                        SlideOverView(message: "Datenbank wurde zurückgesetzt")
+                            .transition(.move(edge: .trailing))
+                            .zIndex(1)
+                            .accessibilityIdentifier("slideOverMessage")
+                    }
+                }
+            )
         }
     }
 }
