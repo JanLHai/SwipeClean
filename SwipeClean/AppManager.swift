@@ -2,8 +2,9 @@
 //  AppManager.swift
 //  SwipeClean
 //
-//  Created by [Dein Name] on [Datum].
+//  Created by Jan Haider on 16.02.25.
 //
+
 
 import SwiftUI
 import StoreKit

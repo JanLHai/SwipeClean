@@ -54,6 +54,11 @@ struct StartView: View {
                 }
                 // Starte den CloudKit Sync
                 CloudKitSyncManager.shared.startSync()
+                
+                // Bewertungsaufforderung nach 5 Sekunden, falls noch nicht bewertet
+                DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                    AppManager.shared.requestReviewIfAppropriate()
+                }
             }
             .onDisappear {
                 CloudKitSyncManager.shared.stopSync()
