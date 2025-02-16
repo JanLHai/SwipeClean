@@ -2742,61 +2742,61 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "You can now sync settings and data via images with iCloud"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ahora es posible sincronizar configuraciones y datos mediante las imágenes con iCloud"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Il est désormais possible de synchroniser les réglages et les données via les images avec iCloud"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "अब आप iCloud के माध्यम से चित्रों द्वारा सेटिंग्स और डेटा सिंक्रनाइज़ कर सकते हैं"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ora è possibile sincronizzare impostazioni e dati tramite le immagini con iCloud"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "iCloudを使って画像経由で設定とデータを同期できるようになりました"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "이제 iCloud를 통해 사진으로 설정 및 데이터를 동기화할 수 있습니다"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Agora é possível sincronizar configurações e dados através das imagens com o iCloud"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Теперь можно синхронизировать настройки и данные через изображения с iCloud"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "现在可以通过图片与 iCloud 同步设置和数据"
           }
         }
@@ -2813,61 +2813,61 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "iCloud Synchronization"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Sincronización de iCloud"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Synchronisation iCloud"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "iCloud सिंक्रनाइज़ेशन"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Sincronizzazione iCloud"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "iCloud同期"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "iCloud 동기화"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Sincronização iCloud"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Синхронизация iCloud"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "iCloud 同步"
           }
         }
@@ -2884,61 +2884,61 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "You can now also declutter videos"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ahora también puedes organizar tus videos"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Vous pouvez désormais également nettoyer vos vidéos"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "अब आप वीडियो भी साफ़-सुथरे कर सकते हैं"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ora puoi anche fare pulizia nei video"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "動画の整理もできるようになりました"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "이제 동영상도 정리할 수 있습니다"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Agora você também pode limpar os vídeos"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Теперь вы также можете навести порядок в видео"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "现在您也可以清理视频"
           }
         }
@@ -2955,61 +2955,61 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Video Support"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Soporte de video"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Support Vidéo"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "वीडियो समर्थन"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Supporto Video"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "動画サポート"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "동영상 지원"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Suporte a Vídeo"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Поддержка видео"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "视频支持"
           }
         }
@@ -3026,61 +3026,61 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "You can now decide in the settings whether to mute sounds"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ahora puedes decidir en la configuración si deseas silenciar los sonidos"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Vous pouvez désormais choisir dans les paramètres de mettre les sons en sourdine"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "अब आप सेटिंग्स में तय कर सकते हैं कि आप ध्वनियों को म्यूट करना चाहते हैं या नहीं"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ora puoi decidere nelle impostazioni se disattivare i suoni"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "設定でサウンドをミュートするかどうか選択できるようになりました"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "이제 설정에서 소리를 음소거할지 결정할 수 있습니다"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Agora você pode decidir nas configurações se deseja silenciar os sons"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Теперь вы можете в настройках решить, хотите ли вы отключить звуки"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "现在您可以在设置中选择是否静音"
           }
         }
@@ -3097,61 +3097,61 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mute Volume"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Silenciar volumen"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Couper le volume"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "वॉल्यूम म्यूट करें"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Disattiva volume"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "音量ミュート"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "음량 음소거"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Silenciar Volume"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Отключить громкость"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "静音音量"
           }
         }
@@ -3168,61 +3168,61 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "In addition to German, we now also support English, French, Italian, Japanese, Korean, Portuguese, Hindi, Spanish, Chinese (Simplified), and Russian"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Además del alemán, ahora también ofrecemos soporte para inglés, francés, italiano, japonés, coreano, portugués, hindi, español, chino (simplificado) y ruso"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nous supportons désormais, en plus de l’allemand, l’anglais, le français, l’italien, le japonais, le coréen, le portugais, l’hindi, l’espagnol, le chinois (simplifié) et le russe"
           }
         },
         "hi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "अब हम जर्मन के अलावा अंग्रेजी, फ्रेंच, इतालवी, जापानी, कोरियाई, पुर्तगाली, हिंदी, स्पेनिश, चीनी (सरलीकृत) और रूसी भाषाओं का भी समर्थन करते हैं"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ora supportiamo, oltre al tedesco, anche l’inglese, il francese, l’italiano, il giapponese, il coreano, il portoghese, l’hindi, lo spagnolo, il cinese (semplificato) e il russo"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "設定でサウンドをミュートするかどうか選択できるようになりました"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "독일어 외에도 영어, 프랑스어, 이탈리아어, 일본어, 한국어, 포르투갈어, 힌디어, 스페인어, 중국어(간체), 러시아어를 지원합니다"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Além do alemão, agora também oferecemos suporte para inglês, francês, italiano, japonês, coreano, português, hindi, espanhol, chinês (simplificado) e russo"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Теперь, помимо немецкого, мы также поддерживаем английский, французский, итальянский, японский, корейский, португальский, хинди, испанский, китайский (упрощённый) и русский языки"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "除了德语外，我们现在还支持英语、法语、意大利语、日语、韩语、葡萄牙语、印地语、西班牙语、简体中文和俄语"
           }
         }
@@ -3231,6 +3231,12 @@
     "whatsNew_feature4_title_v.1.1.0" : {
       "comment" : "Zusätzliche Sprachen",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliche Sprachen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
