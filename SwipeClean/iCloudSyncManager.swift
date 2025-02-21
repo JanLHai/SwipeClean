@@ -93,10 +93,8 @@ class iCloudSyncManager: ObservableObject {
         
         // MERGE: mediaMuted (OR-Verknüpfung)
         let localMediaMuted = UserDefaults.standard.bool(forKey: kMediaMuted)
-        let remoteMediaMuted = remoteStore.bool(forKey: kMediaMuted)
-        let mergedMediaMuted = localMediaMuted || remoteMediaMuted
-        UserDefaults.standard.set(mergedMediaMuted, forKey: kMediaMuted)
-        remoteStore.set(mergedMediaMuted, forKey: kMediaMuted)
+        UserDefaults.standard.set(localMediaMuted, forKey: kMediaMuted)
+        remoteStore.set(localMediaMuted, forKey: kMediaMuted)
         
         // MERGE: iCloudSyncPurchased (OR)
         let localPurchased = UserDefaults.standard.bool(forKey: kICloudSyncPurchased)
