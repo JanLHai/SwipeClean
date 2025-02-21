@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     @State private var showResetConfirmation = false
     @State private var showSlideOver = false
-    @AppStorage("mediaMuted") var mediaMuted: Bool = false  // Toggle für "Medien stummschalten"
+    // Entfernt: @AppStorage("mediaMuted") var mediaMuted: Bool = false
     @AppStorage("iCloudSyncEnabled") var iCloudSyncEnabled: Bool = false
 
     // Verwende CloudKitSyncManager als Sync-Manager
@@ -56,15 +56,11 @@ struct SettingsView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color(UIColor.systemGroupedBackground))
-
                 }
                 .listRowInsets(EdgeInsets()) // Nutzt den gesamten Platz
 
-                // Einstellungen
+                // Einstellungen (ohne Medien-Stummschaltung, da diese nun in ContentView gesteuert wird)
                 Section("Einstellungen") {
-                    Toggle("Medien stummschalten", isOn: $mediaMuted)
-                        .accessibilityIdentifier("toggleMediaMuted")
-                    
                     Button(action: {
                         showResetConfirmation = true
                     }) {

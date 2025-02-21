@@ -10,7 +10,8 @@ import PhotosUI
 
 struct LivePhotoViewWrapper: UIViewRepresentable {
     let livePhoto: PHLivePhoto
-    @AppStorage("mediaMuted") var mediaMuted: Bool = false
+    // Persistente Einstellung für LivePhoto Auto-Play (lokal)
+    @AppStorage("livePhotoAutoPlay") var livePhotoAutoPlay: Bool = false
 
     func makeUIView(context: Context) -> PHLivePhotoView {
         let view = PHLivePhotoView()
@@ -20,9 +21,11 @@ struct LivePhotoViewWrapper: UIViewRepresentable {
 
     func updateUIView(_ uiView: PHLivePhotoView, context: Context) {
         uiView.livePhoto = livePhoto
-        // Bei aktiviertem "mediaMuted" wird hint playback (stumm) genutzt,
-        // andernfalls wird full playback mit Ton verwendet.
-        uiView.startPlayback(with: mediaMuted ? .hint : .full)
+        if !livePhotoAutoPlay {
+            uiView.startPlayback(with: .full)
+        } else {
+            uiView.stopPlayback()
+        }
     }
 }
 

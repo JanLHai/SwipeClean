@@ -59,7 +59,8 @@ struct TransparentVideoPlayer: UIViewRepresentable {
 struct AssetVideoView: View {
     let asset: PHAsset
     @ObservedObject var imageCache: ImageCache
-    @AppStorage("mediaMuted") var mediaMuted: Bool = false
+    // Verwende den neuen lokalen Key für die Stummschaltung
+    @AppStorage("mediaMutedLocal") var mediaMutedLocal: Bool = false
     
     @State private var thumbnail: UIImage? = nil
     @State private var isLoadingVideo = false
@@ -68,7 +69,6 @@ struct AssetVideoView: View {
     
     var body: some View {
         ZStack {
-            // Falls der Player bereits initialisiert wurde, zeigen wir diesen immer an
             if let player = player {
                 ZStack {
                     TransparentVideoPlayer(player: player)
@@ -79,7 +79,6 @@ struct AssetVideoView: View {
                             player.pause()
                         }
                     
-                    // Overlay-Play-Button anzeigen, wenn das Video pausiert ist
                     if !isPlaying {
                         Image(systemName: "play.circle.fill")
                             .resizable()
@@ -89,7 +88,6 @@ struct AssetVideoView: View {
                     }
                 }
             } else {
-                // Zeige Thumbnail, falls kein Player existiert
                 ZStack {
                     if let thumbnail = thumbnail {
                         Image(uiImage: thumbnail)
@@ -116,7 +114,7 @@ struct AssetVideoView: View {
             }
         }
         .onAppear(perform: fetchThumbnail)
-        .onChange(of: mediaMuted) { newValue in
+        .onChange(of: mediaMutedLocal) { newValue in
             player?.isMuted = newValue
         }
     }
@@ -133,7 +131,6 @@ struct AssetVideoView: View {
     }
     
     func fetchThumbnail() {
-        // Wenn bereits ein Thumbnail im Cache vorhanden ist, verwenden wir es.
         if let cached = imageCache.cache[asset.localIdentifier] {
             DispatchQueue.main.async {
                 self.thumbnail = cached
@@ -160,7 +157,6 @@ struct AssetVideoView: View {
                     self.imageCache.cache[self.asset.localIdentifier] = result
                 }
             } else if self.asset.mediaType == .video {
-                // Fallback, falls kein Thumbnail geliefert wird.
                 self.generateThumbnailFallback()
             }
         }
@@ -193,7 +189,7 @@ struct AssetVideoView: View {
     func playVideo() {
         if let player = player {
             isPlaying = true
-            player.isMuted = mediaMuted
+            player.isMuted = mediaMutedLocal
             player.play()
             return
         }
@@ -209,18 +205,11 @@ struct AssetVideoView: View {
                 if let avAsset = avAsset {
                     let playerItem = AVPlayerItem(asset: avAsset)
                     self.player = AVPlayer(playerItem: playerItem)
-                    self.player?.isMuted = self.mediaMuted
+                    self.player?.isMuted = self.mediaMutedLocal
                     
-                    // Konfiguriere die Audio-Session entsprechend des Stummmodus:
                     let audioSession = AVAudioSession.sharedInstance()
                     do {
-                        if self.mediaMuted {
-                            // Mit .ambient (oder alternativ .playback mit mixWithOthers) werden andere Medien nicht unterbrochen.
-                            try audioSession.setCategory(.ambient, mode: .moviePlayback, options: [])
-                        } else {
-                            // Normale Wiedergabe – andere Medien werden ggf. pausiert.
-                            try audioSession.setCategory(.ambient, mode: .moviePlayback, options: [])
-                        }
+                        try audioSession.setCategory(.ambient, mode: .moviePlayback, options: [])
                         try audioSession.setActive(true)
                     } catch {
                         print("Fehler beim Konfigurieren der Audio-Session: \(error)")

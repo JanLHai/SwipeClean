@@ -36,7 +36,7 @@ struct WhatsNewContent {
             .init(
                 image: .init(systemName: "speaker.slash"),
                 title: .init(stringLiteral: NSLocalizedString("whatsNew_feature3_title_v.1.1.0", comment: "Lautstärke Stummschalten")),
-                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature3_subtitle_v.1.1.0", comment: "Sie können nun in den Einstellungen entscheiden, ob Sie Töne stummschalten möchten"))
+                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature3_subtitle_v.1.1.0", comment: "Sie können nun entscheiden, ob Sie Töne stummschalten möchten"))
             ),
             .init(
                 image: .init(systemName: "character.bubble"),

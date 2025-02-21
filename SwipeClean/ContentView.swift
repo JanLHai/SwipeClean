@@ -37,6 +37,10 @@ struct ContentView: View {
     @State private var showResetConfirmation = false
     @State private var showSlideOver = false
     
+    // Neue persistente Einstellungen (lokal, ohne iCloud-Sync)
+    @AppStorage("mediaMutedLocal") var mediaMutedLocal: Bool = false
+    @AppStorage("livePhotoAutoPlay") var livePhotoAutoPlay: Bool = false
+
     let tiltThreshold: CGFloat = 75
     
     private var totalTranslation: CGFloat {
@@ -198,19 +202,51 @@ struct ContentView: View {
         .onAppear { requestPhotoLibraryAccess() }
         .onChange(of: assets.count) { _ in prefetchHighQualityImages() }
         .toolbar {
+            // Gruppe links: Back-Button, LivePhoto-Icon und Lautsprecher-Icon
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: { restoreKeptImage() }) {
-                    Image(systemName: "arrowshape.turn.up.left")
-                        .foregroundColor(sessionKeptAssets.isEmpty ? Color(UIColor.darkGray) : Color.white)
-                        .padding(8)
-                        .background(sessionKeptAssets.isEmpty ? Color(UIColor.lightGray) : Color.blue)
-                        .clipShape(Circle())
-                        .scaleEffect(0.7)
-                        .accessibilityLabel("Bild wiederherstellen")
+                HStack(spacing: 2) { // Hier den Abstand zwischen den Buttons auf 4 Punkte setzen (anpassen nach Bedarf)
+                    Button(action: { restoreKeptImage() }) {
+                        Image(systemName: "arrowshape.turn.up.left")
+                            .foregroundColor(sessionKeptAssets.isEmpty ? Color(UIColor.darkGray) : Color.white)
+                            .padding(8)
+                            .background(sessionKeptAssets.isEmpty ? Color(UIColor.lightGray) : Color.blue)
+                            .clipShape(Circle())
+                            .scaleEffect(0.7)
+                            .accessibilityLabel("Bild wiederherstellen")
+                    }
+                    .disabled(sessionKeptAssets.isEmpty)
+                    
+                    Button(action: {
+                        livePhotoAutoPlay.toggle()
+                    }) {
+                        Image(systemName: livePhotoAutoPlay ? "livephoto.slash" : "livephoto")
+                            .foregroundColor(.white)
+                            .padding(7)
+                            .background(livePhotoAutoPlay ? Color.gray : Color.blue)
+                            .clipShape(Circle())
+                            .scaleEffect(0.7)
+                            .accessibilityLabel("LivePhoto")
+                    }
+                    
+                    Button(action: {
+                        mediaMutedLocal.toggle()
+                    }) {
+                        Image(systemName: mediaMutedLocal ? "speaker.slash" : "speaker.wave.2.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                            .padding(8)
+                            .background(mediaMutedLocal ? Color.gray : Color.blue)
+                            .clipShape(Circle())
+                            .scaleEffect(0.7)
+                            .accessibilityLabel("Ton")
+                    }
                 }
-                .disabled(sessionKeptAssets.isEmpty)
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
+            
+            // Gruppe rechts: Fertig-Button und Filter-Icon
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button("Fertig (\(pendingDeletion.count))") {
                     if !pendingDeletion.isEmpty {
                         showReview = true

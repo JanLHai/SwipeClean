@@ -29,8 +29,8 @@ struct FilterMenu: View {
             Divider()
             Text("Datum")
                 .font(.headline)
-            DatePicker("Von", selection: $startDate, displayedComponents: .date)
-            DatePicker("Bis", selection: $endDate, displayedComponents: .date)
+            DatePicker("Von:", selection: $startDate, displayedComponents: .date)
+            DatePicker("Bis:", selection: $endDate, displayedComponents: .date)
         }
         .padding()
     }
