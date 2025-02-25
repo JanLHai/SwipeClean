@@ -32,8 +32,8 @@
 /* Begin PBXFileReference section */
 		5F15ECDB2D6251110037E0CB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5FB6F4162D3855F0001EB8EC /* Clean my Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clean my Gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FB6F4292D3855F1001EB8EC /* SwipeCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FB6F4332D3855F1001EB8EC /* SwipeCleanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FB6F4292D3855F1001EB8EC /* Clean my GalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Clean my GalleryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FB6F4332D3855F1001EB8EC /* Clean my GalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Clean my GalleryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -109,8 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				5FB6F4162D3855F0001EB8EC /* Clean my Gallery.app */,
-				5FB6F4292D3855F1001EB8EC /* SwipeCleanTests.xctest */,
-				5FB6F4332D3855F1001EB8EC /* SwipeCleanUITests.xctest */,
+				5FB6F4292D3855F1001EB8EC /* Clean my GalleryTests.xctest */,
+				5FB6F4332D3855F1001EB8EC /* Clean my GalleryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,9 +142,9 @@
 			productReference = 5FB6F4162D3855F0001EB8EC /* Clean my Gallery.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5FB6F4282D3855F1001EB8EC /* SwipeCleanTests */ = {
+		5FB6F4282D3855F1001EB8EC /* Clean my GalleryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FB6F4402D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "SwipeCleanTests" */;
+			buildConfigurationList = 5FB6F4402D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "Clean my GalleryTests" */;
 			buildPhases = (
 				5FB6F4252D3855F1001EB8EC /* Sources */,
 				5FB6F4262D3855F1001EB8EC /* Frameworks */,
@@ -158,16 +158,16 @@
 			fileSystemSynchronizedGroups = (
 				5FB6F42C2D3855F1001EB8EC /* SwipeCleanTests */,
 			);
-			name = SwipeCleanTests;
+			name = "Clean my GalleryTests";
 			packageProductDependencies = (
 			);
 			productName = SwipeCleanTests;
-			productReference = 5FB6F4292D3855F1001EB8EC /* SwipeCleanTests.xctest */;
+			productReference = 5FB6F4292D3855F1001EB8EC /* Clean my GalleryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5FB6F4322D3855F1001EB8EC /* SwipeCleanUITests */ = {
+		5FB6F4322D3855F1001EB8EC /* Clean my GalleryUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FB6F4432D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "SwipeCleanUITests" */;
+			buildConfigurationList = 5FB6F4432D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "Clean my GalleryUITests" */;
 			buildPhases = (
 				5FB6F42F2D3855F1001EB8EC /* Sources */,
 				5FB6F4302D3855F1001EB8EC /* Frameworks */,
@@ -181,11 +181,11 @@
 			fileSystemSynchronizedGroups = (
 				5FB6F4362D3855F1001EB8EC /* SwipeCleanUITests */,
 			);
-			name = SwipeCleanUITests;
+			name = "Clean my GalleryUITests";
 			packageProductDependencies = (
 			);
 			productName = SwipeCleanUITests;
-			productReference = 5FB6F4332D3855F1001EB8EC /* SwipeCleanUITests.xctest */;
+			productReference = 5FB6F4332D3855F1001EB8EC /* Clean my GalleryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -211,7 +211,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5FB6F4112D3855F0001EB8EC /* Build configuration list for PBXProject "SwipeClean" */;
+			buildConfigurationList = 5FB6F4112D3855F0001EB8EC /* Build configuration list for PBXProject "Clean my Gallery" */;
 			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -240,8 +240,8 @@
 			projectRoot = "";
 			targets = (
 				5FB6F4152D3855F0001EB8EC /* Clean my Gallery */,
-				5FB6F4282D3855F1001EB8EC /* SwipeCleanTests */,
-				5FB6F4322D3855F1001EB8EC /* SwipeCleanUITests */,
+				5FB6F4282D3855F1001EB8EC /* Clean my GalleryTests */,
+				5FB6F4322D3855F1001EB8EC /* Clean my GalleryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -543,7 +543,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwipeClean.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwipeClean";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clean my Gallery.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clean my Gallery";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
@@ -568,7 +568,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwipeClean.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwipeClean";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clean my Gallery.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clean my Gallery";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
@@ -624,7 +624,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5FB6F4112D3855F0001EB8EC /* Build configuration list for PBXProject "SwipeClean" */ = {
+		5FB6F4112D3855F0001EB8EC /* Build configuration list for PBXProject "Clean my Gallery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FB6F43B2D3855F1001EB8EC /* Debug */,
@@ -642,7 +642,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FB6F4402D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "SwipeCleanTests" */ = {
+		5FB6F4402D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "Clean my GalleryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FB6F4412D3855F1001EB8EC /* Debug */,
@@ -651,7 +651,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FB6F4432D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "SwipeCleanUITests" */ = {
+		5FB6F4432D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "Clean my GalleryUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FB6F4442D3855F1001EB8EC /* Debug */,

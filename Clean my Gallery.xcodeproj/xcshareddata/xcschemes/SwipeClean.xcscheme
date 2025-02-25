@@ -18,7 +18,7 @@
                BlueprintIdentifier = "5FB6F4152D3855F0001EB8EC"
                BuildableName = "Clean my Gallery.app"
                BlueprintName = "Clean my Gallery"
-               ReferencedContainer = "container:SwipeClean.xcodeproj">
+               ReferencedContainer = "container:Clean my Gallery.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5FB6F4282D3855F1001EB8EC"
-               BuildableName = "SwipeCleanTests.xctest"
-               BlueprintName = "SwipeCleanTests"
-               ReferencedContainer = "container:SwipeClean.xcodeproj">
+               BuildableName = "Clean my GalleryTests.xctest"
+               BlueprintName = "Clean my GalleryTests"
+               ReferencedContainer = "container:Clean my Gallery.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5FB6F4322D3855F1001EB8EC"
-               BuildableName = "SwipeCleanUITests.xctest"
-               BlueprintName = "SwipeCleanUITests"
-               ReferencedContainer = "container:SwipeClean.xcodeproj">
+               BuildableName = "Clean my GalleryUITests.xctest"
+               BlueprintName = "Clean my GalleryUITests"
+               ReferencedContainer = "container:Clean my Gallery.xcodeproj">
             </BuildableReference>
             <SkippedTests>
                <Test
@@ -76,7 +76,7 @@
             BlueprintIdentifier = "5FB6F4152D3855F0001EB8EC"
             BuildableName = "Clean my Gallery.app"
             BlueprintName = "Clean my Gallery"
-            ReferencedContainer = "container:SwipeClean.xcodeproj">
+            ReferencedContainer = "container:Clean my Gallery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -93,7 +93,7 @@
             BlueprintIdentifier = "5FB6F4152D3855F0001EB8EC"
             BuildableName = "Clean my Gallery.app"
             BlueprintName = "Clean my Gallery"
-            ReferencedContainer = "container:SwipeClean.xcodeproj">
+            ReferencedContainer = "container:Clean my Gallery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
