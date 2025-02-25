@@ -108,6 +108,25 @@ class DatabaseManager {
         UserDefaults.standard.set(keptImages, forKey: userDefaultsKey)
     }
     
+    /// Neue Methode: Setzt die "deletedImages" zurück, die zu den Assets des angegebenen Albums gehören.
+    /// Falls `album` nil ist, werden alle deletedImages entfernt.
+    func resetDeletedImages(for album: PHAssetCollection?) {
+        guard let album = album else {
+            deletedImages.removeAll()
+            UserDefaults.standard.removeObject(forKey: deletedImagesKey)
+            return
+        }
+        
+        let fetchResult = PHAsset.fetchAssets(in: album, options: nil)
+        var assetIDsInAlbum = Set<String>()
+        fetchResult.enumerateObjects { (asset, _, _) in
+            assetIDsInAlbum.insert(asset.localIdentifier)
+        }
+        
+        deletedImages = Set(deletedImages.filter { !assetIDsInAlbum.contains($0) })
+        UserDefaults.standard.set(Array(deletedImages), forKey: deletedImagesKey)
+    }
+    
     func removeKeptAsset(assetID: String) {
         keptImages.removeValue(forKey: assetID)
         UserDefaults.standard.set(keptImages, forKey: userDefaultsKey)

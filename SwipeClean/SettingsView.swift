@@ -50,7 +50,7 @@ struct SettingsView: View {
                             .frame(width: UIScreen.main.bounds.width * 0.3)
                             .clipShape(RoundedRectangle(cornerRadius: UIScreen.main.bounds.width / 15, style: .continuous))
                             .padding(.top, 16)
-                        Text("SwipeClean")
+                        Text("Clean my Gallery")
                             .font(.largeTitle)
                             .padding(.top, 8)
                     }

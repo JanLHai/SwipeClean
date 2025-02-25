@@ -32,7 +32,7 @@ struct StartView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("SwipeClean")
+                    Text("Clean my Gallery")
                         .font(.largeTitle.bold())
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {

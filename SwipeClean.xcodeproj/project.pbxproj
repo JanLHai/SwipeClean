@@ -31,18 +31,18 @@
 
 /* Begin PBXFileReference section */
 		5F15ECDB2D6251110037E0CB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		5FB6F4162D3855F0001EB8EC /* SwipeClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FB6F4162D3855F0001EB8EC /* Clean my Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clean my Gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB6F4292D3855F1001EB8EC /* SwipeCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB6F4332D3855F1001EB8EC /* SwipeCleanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwipeCleanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5FB897D12D54D56900835E2E /* Exceptions for "SwipeClean" folder in "SwipeClean" target */ = {
+		5FB897D12D54D56900835E2E /* Exceptions for "SwipeClean" folder in "Clean my Gallery" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 5FB6F4152D3855F0001EB8EC /* SwipeClean */;
+			target = 5FB6F4152D3855F0001EB8EC /* Clean my Gallery */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -50,7 +50,7 @@
 		5FB6F4182D3855F0001EB8EC /* SwipeClean */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				5FB897D12D54D56900835E2E /* Exceptions for "SwipeClean" folder in "SwipeClean" target */,
+				5FB897D12D54D56900835E2E /* Exceptions for "SwipeClean" folder in "Clean my Gallery" target */,
 			);
 			path = SwipeClean;
 			sourceTree = "<group>";
@@ -108,7 +108,7 @@
 		5FB6F4172D3855F0001EB8EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5FB6F4162D3855F0001EB8EC /* SwipeClean.app */,
+				5FB6F4162D3855F0001EB8EC /* Clean my Gallery.app */,
 				5FB6F4292D3855F1001EB8EC /* SwipeCleanTests.xctest */,
 				5FB6F4332D3855F1001EB8EC /* SwipeCleanUITests.xctest */,
 			);
@@ -118,9 +118,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5FB6F4152D3855F0001EB8EC /* SwipeClean */ = {
+		5FB6F4152D3855F0001EB8EC /* Clean my Gallery */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FB6F43D2D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "SwipeClean" */;
+			buildConfigurationList = 5FB6F43D2D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "Clean my Gallery" */;
 			buildPhases = (
 				5FB6F4122D3855F0001EB8EC /* Sources */,
 				5FB6F4132D3855F0001EB8EC /* Frameworks */,
@@ -133,13 +133,13 @@
 			fileSystemSynchronizedGroups = (
 				5FB6F4182D3855F0001EB8EC /* SwipeClean */,
 			);
-			name = SwipeClean;
+			name = "Clean my Gallery";
 			packageProductDependencies = (
 				5F15EB1A2D5E987F0037E0CB /* WhatsNewKit */,
 				5F15EB1D2D5E98B10037E0CB /* OnboardingKit */,
 			);
 			productName = SwipeClean;
-			productReference = 5FB6F4162D3855F0001EB8EC /* SwipeClean.app */;
+			productReference = 5FB6F4162D3855F0001EB8EC /* Clean my Gallery.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5FB6F4282D3855F1001EB8EC /* SwipeCleanTests */ = {
@@ -239,7 +239,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5FB6F4152D3855F0001EB8EC /* SwipeClean */,
+				5FB6F4152D3855F0001EB8EC /* Clean my Gallery */,
 				5FB6F4282D3855F1001EB8EC /* SwipeCleanTests */,
 				5FB6F4322D3855F1001EB8EC /* SwipeCleanUITests */,
 			);
@@ -298,12 +298,12 @@
 /* Begin PBXTargetDependency section */
 		5FB6F42B2D3855F1001EB8EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5FB6F4152D3855F0001EB8EC /* SwipeClean */;
+			target = 5FB6F4152D3855F0001EB8EC /* Clean my Gallery */;
 			targetProxy = 5FB6F42A2D3855F1001EB8EC /* PBXContainerItemProxy */;
 		};
 		5FB6F4352D3855F1001EB8EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5FB6F4152D3855F0001EB8EC /* SwipeClean */;
+			target = 5FB6F4152D3855F0001EB8EC /* Clean my Gallery */;
 			targetProxy = 5FB6F4342D3855F1001EB8EC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -437,7 +437,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = SwipeClean/SwipeClean.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwipeClean/Preview Content\"";
 				DEVELOPMENT_TEAM = CZ5W54GW3Y;
@@ -445,7 +445,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeClean/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Swipe Clean";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clean my Gallery";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Um Fotos anzuzeigen und gegebenenfalls zu löschen.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -484,7 +484,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = SwipeClean/SwipeClean.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwipeClean/Preview Content\"";
 				DEVELOPMENT_TEAM = CZ5W54GW3Y;
@@ -492,7 +492,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeClean/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Swipe Clean";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clean my Gallery";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Um Fotos anzuzeigen und gegebenenfalls zu löschen.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -633,7 +633,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FB6F43D2D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "SwipeClean" */ = {
+		5FB6F43D2D3855F1001EB8EC /* Build configuration list for PBXNativeTarget "Clean my Gallery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FB6F43E2D3855F1001EB8EC /* Debug */,

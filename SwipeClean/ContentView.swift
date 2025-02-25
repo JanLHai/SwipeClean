@@ -148,7 +148,9 @@ struct ContentView: View {
                             title: Text("Datenbank zurücksetzen"),
                             message: Text("Bist du dir sicher, dass du die lokale und Cloud-Datenbank zurücksetzen möchtest?"),
                             primaryButton: .destructive(Text("Zurücksetzen"), action: {
+                                // Rücksetzen beider Listen: kept und deleted
                                 DatabaseManager.shared.resetKeptImages(for: album)
+                                DatabaseManager.shared.resetDeletedImages(for: album)
                                 CloudKitSyncManager.shared.resetCloudDatabase { _ in }
                                 loadAssets()
                                 pendingDeletion.removeAll()
@@ -204,7 +206,7 @@ struct ContentView: View {
         .toolbar {
             // Gruppe links: Back-Button, LivePhoto-Icon und Lautsprecher-Icon
             ToolbarItem(placement: .navigationBarLeading) {
-                HStack(spacing: 2) { // Hier den Abstand zwischen den Buttons auf 4 Punkte setzen (anpassen nach Bedarf)
+                HStack(spacing: 2) {
                     Button(action: { restoreKeptImage() }) {
                         Image(systemName: "arrowshape.turn.up.left")
                             .foregroundColor(sessionKeptAssets.isEmpty ? Color(UIColor.darkGray) : Color.white)
@@ -340,43 +342,49 @@ struct ContentView: View {
                         break
                     }
                 }
-                if !DatabaseManager.shared.isAssetKept(assetID: asset.localIdentifier) &&
-                    !DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
-                    if let dateRange = dateRange {
-                        if let creationDate = asset.creationDate,
-                           creationDate >= dateRange.start && creationDate <= dateRange.end {
-                            fetchedAssets.append(asset)
-                        }
-                    } else {
+                // Zusätzlich prüfen, ob das Asset als "behalten", "gelöscht" oder in der pendingDeletion-Liste markiert ist.
+                if DatabaseManager.shared.isAssetKept(assetID: asset.localIdentifier) ||
+                   DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) ||
+                   pendingDeletion.contains(where: { $0.localIdentifier == asset.localIdentifier }) {
+                    return
+                }
+                
+                if let dateRange = dateRange {
+                    if let creationDate = asset.creationDate,
+                       creationDate >= dateRange.start && creationDate <= dateRange.end {
                         fetchedAssets.append(asset)
                     }
+                } else {
+                    fetchedAssets.append(asset)
                 }
             }
         } else {
             let fetchResult = PHAsset.fetchAssets(with: fetchOptions)
             fetchResult.enumerateObjects { asset, _, _ in
-                if !DatabaseManager.shared.isAssetKept(assetID: asset.localIdentifier) &&
-                    !DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) {
-                    if let type = mediaTypeFilter?.first {
-                        switch type {
-                        case 0:
-                            if asset.mediaType != .image || asset.mediaSubtypes.contains(.photoLive) { return }
-                        case 1:
-                            if asset.mediaType != .image || !asset.mediaSubtypes.contains(.photoLive) { return }
-                        case 2:
-                            if asset.mediaType != .video { return }
-                        default:
-                            break
-                        }
+                if DatabaseManager.shared.isAssetKept(assetID: asset.localIdentifier) ||
+                   DatabaseManager.shared.isAssetDeleted(assetID: asset.localIdentifier) ||
+                   pendingDeletion.contains(where: { $0.localIdentifier == asset.localIdentifier }) {
+                    return
+                }
+                if let type = mediaTypeFilter?.first {
+                    switch type {
+                    case 0:
+                        if asset.mediaType != .image || asset.mediaSubtypes.contains(.photoLive) { return }
+                    case 1:
+                        if asset.mediaType != .image || !asset.mediaSubtypes.contains(.photoLive) { return }
+                    case 2:
+                        if asset.mediaType != .video { return }
+                    default:
+                        break
                     }
-                    if let dateRange = dateRange {
-                        if let creationDate = asset.creationDate,
-                           creationDate >= dateRange.start && creationDate <= dateRange.end {
-                            fetchedAssets.append(asset)
-                        }
-                    } else {
+                }
+                if let dateRange = dateRange {
+                    if let creationDate = asset.creationDate,
+                       creationDate >= dateRange.start && creationDate <= dateRange.end {
                         fetchedAssets.append(asset)
                     }
+                } else {
+                    fetchedAssets.append(asset)
                 }
             }
         }

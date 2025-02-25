@@ -16,7 +16,10 @@ struct SwipeCleanApp: App {
                 .environment(
                     \.whatsNew,
                     WhatsNewEnvironment(
-                        versionStore: InMemoryWhatsNewVersionStore(),
+                        // Specify in which way the presented WhatsNew Versions are stored.
+                        // zum entwikeln kann man diesen Modus verwenden InMemoryWhatsNewVersionStore
+                        // In default the `UserDefaultsWhatsNewVersionStore` is used.
+                        versionStore: UserDefaultsWhatsNewVersionStore(),
                         whatsNewCollection: self
                     )
                 )

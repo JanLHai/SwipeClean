@@ -561,6 +561,76 @@
         }
       }
     },
+    "Clean my Gallery" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ギャラリークリーナー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистка Галереи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清理图库"
+          }
+        }
+      }
+    },
     "CloudKit Synchronisierung" : {
       "localizations" : {
         "de" : {
@@ -2101,77 +2171,6 @@
         }
       }
     },
-    "Medien stummschalten" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Medien stummschalten"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mute Media"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Silenciar medios"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couper le son des médias"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "मीडिया को म्यूट करें"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Silenzia media"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "メディアをミュートする"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "미디어 음소거"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Silenciar mídias"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отключить звук медиа"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "静音媒体"
-          }
-        }
-      }
-    },
     "Medientyp" : {
       "localizations" : {
         "de" : {
@@ -2588,76 +2587,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "支持请求"
-          }
-        }
-      }
-    },
-    "SwipeClean" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "स्वाइप क्लीन"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Clean"
           }
         }
       }
@@ -3657,67 +3586,67 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Was ist neu in Swipe Clean"
+            "value" : "Was ist neu in Clean my Gallery"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "What’s new in Swipe Clean"
+            "value" : "What’s new in Clean my Gallery"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Qué hay de nuevo en Swipe Clean?"
+            "value" : "¿Qué hay de nuevo en Clean my Gallery?"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quoi de neuf dans Swipe Clean"
+            "value" : "Quoi de neuf dans Clean my Gallery"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Swipe Clean में नया क्या है?"
+            "value" : "Clean my Gallery में नया क्या है?"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cosa c’è di nuovo in Swipe Clean "
+            "value" : "Cosa c’è di nuovo in Clean my Gallery "
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Swipe Clean の新機能"
+            "value" : "ギャラリークリーナー の新機能"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Swipe Clean 의 새 소식"
+            "value" : "Clean my Gallery 의 새 소식"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O que há de novo no Swipe Clean"
+            "value" : "O que há de novo no Clean my Gallery"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Что нового в Swipe Clean"
+            "value" : "Что нового в Очистка Галереи"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Swipe Clean 的更新内容"
+            "value" : "清理图库 的更新内容"
           }
         }
       }
