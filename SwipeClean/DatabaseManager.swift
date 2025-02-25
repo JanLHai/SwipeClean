@@ -55,10 +55,9 @@ class DatabaseManager {
         return false
     }
     
-    /// Neue Methode: Prüft, ob eine Asset-ID bereits als behalten markiert wurde.
+    /// Prüft, ob eine Asset-ID bereits als behalten markiert wurde.
     func isAssetKept(assetID: String) -> Bool {
-        let isKept = keptImages[assetID] != nil
-        return isKept
+        return keptImages[assetID] != nil
     }
     
     func deleteAsset(assetID: String, freedBytes: Int64) {
@@ -89,7 +88,6 @@ class DatabaseManager {
     /// Falls `album` nil ist, werden alle keptImages entfernt.
     func resetKeptImages(for album: PHAssetCollection?) {
         guard let album = album else {
-            // Kein Album angegeben – alle keptImages zurücksetzen.
             keptImages.removeAll()
             UserDefaults.standard.removeObject(forKey: userDefaultsKey)
             return
