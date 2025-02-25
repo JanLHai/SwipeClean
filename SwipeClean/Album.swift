@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Photos
+import Photos 
 
 // Modell für ein Album
 struct Album: Identifiable {
