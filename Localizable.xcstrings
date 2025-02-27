@@ -1542,6 +1542,7 @@
       }
     },
     "Kein Foto in diesem Zeitraum gefunden" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

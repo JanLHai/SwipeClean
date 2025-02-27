@@ -127,12 +127,9 @@ struct ContentView: View {
             .frame(height: UIScreen.main.bounds.height * 0.7)
             
             if assets.isEmpty && PHAsset.fetchAssets(with: .image, options: nil).count > 0 {
-                if dateRange != nil {
-                    Text("Kein Foto in diesem Zeitraum gefunden")
-                        .foregroundColor(.gray)
-                        .padding()
-                } else {
-                    // Reset-Button, wenn keine Bilder mehr vorhanden sind – mit Bestätigungs-Alert
+                // Prüfe, ob Filter aktiv sind
+                if dateRange == nil && mediaTypeFilter == nil {
+                    // Zeige den Reset-Button nur, wenn keine Filter aktiv sind (also entweder gesamte Galerie oder ein Album sortiert wird)
                     Button(action: {
                         showResetConfirmation = true
                     }) {
