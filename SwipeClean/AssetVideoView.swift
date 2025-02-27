@@ -66,26 +66,38 @@ struct AssetVideoView: View {
     @State private var isLoadingVideo = false
     @State private var player: AVPlayer? = nil
     @State private var isPlaying = false
+    @State private var videoEnded = false // Neuer State für Video-Ende
+    @State private var playerItemObserver: NSObjectProtocol? = nil // Observer für Videoende
     
     var body: some View {
         ZStack {
             if let player = player {
                 ZStack {
                     TransparentVideoPlayer(player: player)
-                        .onTapGesture {
-                            togglePlayPause()
-                        }
                         .onDisappear {
                             player.pause()
+                            removeVideoEndObserver()
                         }
                     
-                    if !isPlaying {
-                        Image(systemName: "play.circle.fill")
-                            .resizable()
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(.white)
-                            .opacity(0.8)
+                    Button(action: {
+                        togglePlayPause()
+                    }) {
+                        ZStack {
+                            // Transparenter Bereich über dem gesamten Video für bessere Tap-Erkennung
+                            Color.clear
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            
+                            // Play-Button nur anzeigen, wenn nicht abgespielt wird oder Video zu Ende ist
+                            if !isPlaying || videoEnded {
+                                Image(systemName: "play.circle.fill")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .foregroundColor(.white)
+                                    .opacity(0.8)
+                            }
+                        }
                     }
+                    .buttonStyle(PlainButtonStyle()) // Entfernt jegliche Button-Stile für eine nahtlose Darstellung
                 }
             } else {
                 ZStack {
@@ -121,7 +133,14 @@ struct AssetVideoView: View {
     
     func togglePlayPause() {
         guard let player = player else { return }
-        if player.timeControlStatus == .playing {
+        
+        if videoEnded {
+            // Wenn das Video zu Ende ist, spulen wir zurück und starten neu
+            player.seek(to: CMTime.zero)
+            videoEnded = false
+            player.play()
+            isPlaying = true
+        } else if player.timeControlStatus == .playing {
             player.pause()
             isPlaying = false
         } else {
@@ -186,8 +205,42 @@ struct AssetVideoView: View {
         }
     }
     
+    // Observer für Video-Ende hinzufügen
+    func addVideoEndObserver() {
+        removeVideoEndObserver() // Zuerst alten Observer entfernen, falls vorhanden
+        
+        guard let player = player else { return }
+        
+        // NotificationCenter-Observer für das Ende der Wiedergabe
+        playerItemObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: .main) { _ in
+                DispatchQueue.main.async {
+                    // Video zurück zum Anfang setzen
+                    player.seek(to: CMTime.zero)
+                    self.videoEnded = true
+                    self.isPlaying = false
+                }
+            }
+    }
+    
+    // Observer für Video-Ende entfernen
+    func removeVideoEndObserver() {
+        if let observer = playerItemObserver {
+            NotificationCenter.default.removeObserver(observer)
+            playerItemObserver = nil
+        }
+    }
+    
     func playVideo() {
         if let player = player {
+            // Video neu starten, wenn es zu Ende ist
+            if videoEnded {
+                player.seek(to: CMTime.zero)
+                videoEnded = false
+            }
+            
             isPlaying = true
             player.isMuted = mediaMutedLocal
             player.play()
@@ -215,7 +268,11 @@ struct AssetVideoView: View {
                         print("Fehler beim Konfigurieren der Audio-Session: \(error)")
                     }
                     
+                    // Observer für Video-Ende hinzufügen
+                    self.addVideoEndObserver()
+                    
                     self.isPlaying = true
+                    self.videoEnded = false
                     self.player?.play()
                 }
             }
