@@ -10,6 +10,12 @@ import Photos
 import PhotosUI
 import AVKit
 
+// Neue Struktur für die Erfassung aller Entscheidungen
+struct AssetDecision {
+    let asset: PHAsset
+    let wasKept: Bool  // true = zum Behalten, false = zum Löschen
+}
+
 struct ContentView: View {
     /// Optionales Album – falls gesetzt, werden nur dessen Bilder/Videos geladen.
     let album: PHAssetCollection?
@@ -27,8 +33,10 @@ struct ContentView: View {
     /// Puffer für zur Löschung vorgemerkte Assets
     @State private var pendingDeletion: [PHAsset] = []
     @StateObject private var imageCache = ImageCache()
-    /// In dieser Session als „Behalten“ markierte Assets
+    /// In dieser Session als „Behalten" markierte Assets
     @State private var sessionKeptAssets: [PHAsset] = []
+    /// Neue Variable: Chronologische Erfassung aller Asset-Entscheidungen
+    @State private var sessionDecisions: [AssetDecision] = []
     
     /// Anzeige des Review-Screens
     @State private var showReview: Bool = false
@@ -204,16 +212,16 @@ struct ContentView: View {
             // Gruppe links: Back-Button, LivePhoto-Icon und Lautsprecher-Icon
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack(spacing: 2) {
-                    Button(action: { restoreKeptImage() }) {
-                        Image(systemName: "arrowshape.turn.up.left")
-                            .foregroundColor(sessionKeptAssets.isEmpty ? Color(UIColor.darkGray) : Color.white)
+                    Button(action: { restoreLastDecision() }) {
+                        Image(systemName: "arrow.uturn.backward")
+                            .foregroundColor(sessionDecisions.isEmpty ? Color(UIColor.darkGray) : Color.white)
                             .padding(8)
-                            .background(sessionKeptAssets.isEmpty ? Color(UIColor.lightGray) : Color.blue)
+                            .background(sessionDecisions.isEmpty ? Color(UIColor.lightGray) : Color.blue)
                             .clipShape(Circle())
                             .scaleEffect(0.7)
-                            .accessibilityLabel("Bild wiederherstellen")
+                            .accessibilityLabel("Letzte Entscheidung rückgängig machen")
                     }
-                    .disabled(sessionKeptAssets.isEmpty)
+                    .disabled(sessionDecisions.isEmpty)
                     
                     Button(action: {
                         livePhotoAutoPlay.toggle()
@@ -400,12 +408,16 @@ struct ContentView: View {
         guard let currentAsset = assets.first else { return }
         DatabaseManager.shared.saveAsset(assetID: currentAsset.localIdentifier, date: Date())
         sessionKeptAssets.append(currentAsset)
+        // Neue Zeile: Entscheidung protokollieren
+        sessionDecisions.append(AssetDecision(asset: currentAsset, wasKept: true))
         removeCurrentAsset()
     }
     
     func markCurrentImageForDeletion() {
         guard let currentAsset = assets.first else { return }
         pendingDeletion.append(currentAsset)
+        // Neue Zeile: Entscheidung protokollieren
+        sessionDecisions.append(AssetDecision(asset: currentAsset, wasKept: false))
         removeCurrentAsset()
     }
     
@@ -422,6 +434,27 @@ struct ContentView: View {
         if assets.isEmpty {
             loadAssets()
         }
+    }
+    
+    // Neue Funktion zur Wiederherstellung der letzten Entscheidung (behalten oder löschen)
+    func restoreLastDecision() {
+        guard let lastDecision = sessionDecisions.popLast() else { return }
+        
+        if lastDecision.wasKept {
+            // Bild war als "behalten" markiert
+            DatabaseManager.shared.removeKeptAsset(assetID: lastDecision.asset.localIdentifier)
+            if let index = sessionKeptAssets.firstIndex(where: { $0.localIdentifier == lastDecision.asset.localIdentifier }) {
+                sessionKeptAssets.remove(at: index)
+            }
+        } else {
+            // Bild war als "zu löschen" markiert
+            if let index = pendingDeletion.firstIndex(where: { $0.localIdentifier == lastDecision.asset.localIdentifier }) {
+                pendingDeletion.remove(at: index)
+            }
+        }
+        
+        // Bild wieder zur Hauptliste hinzufügen
+        assets.insert(lastDecision.asset, at: 0)
     }
     
     func prefetchHighQualityImages() {
@@ -462,12 +495,6 @@ struct ContentView: View {
                 print("Fehler bei der Batch-Löschung: \(error?.localizedDescription ?? "Unbekannter Fehler")")
             }
         }
-    }
-    
-    func restoreKeptImage() {
-        guard let asset = sessionKeptAssets.popLast() else { return }
-        DatabaseManager.shared.removeKeptAsset(assetID: asset.localIdentifier)
-        assets.insert(asset, at: 0)
     }
 }
 

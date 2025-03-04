@@ -282,6 +282,7 @@
       }
     },
     "Bild wiederherstellen" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1751,6 +1752,9 @@
           }
         }
       }
+    },
+    "Letzte Entscheidung rückgängig machen" : {
+
     },
     "LivePhoto" : {
       "localizations" : {
