@@ -181,8 +181,90 @@ final class UITestsBilder: XCTestCase {
         XCTAssertTrue(fertigButton.waitForExistence(timeout: 5), "Der 'Fertig'-Button sollte existieren")
         fertigButton.tap()
         
-        // Überprüfe, ob wir zurück in der StartView sind (z. B. durch das Vorhandensein des "Aufräumen"-Buttons)
+        // Überprüfe, ob wir zurück in der StartView sind (z. B. durch das Vorhandensein des "Aufräumen"-Buttons)
         let aufraeumenButton = app.buttons["Aufräumen"]
         XCTAssertTrue(aufraeumenButton.waitForExistence(timeout: 5), "Nach 'Fertig' sollte man zur StartView zurückkehren")
+    }
+    
+    @MainActor
+    func test05_SharingFunctionality() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Navigiere zum Aufräumen-Screen, wo Bilder angezeigt werden
+        let aufraumenButton = app.buttons["Aufräumen"]
+        XCTAssertTrue(aufraumenButton.waitForExistence(timeout: 5), "Der 'Aufräumen'-Button sollte existieren")
+        aufraumenButton.tap()
+        
+        // Warte, bis ein Asset angezeigt wird
+        let assetView = app.otherElements["assetMediaView"]
+        XCTAssertTrue(assetView.waitForExistence(timeout: 5), "Das Asset sollte angezeigt werden")
+        
+        // Überprüfe, ob der Teilen-Button in der Navigationsleiste existiert
+        // Hinweis: Da der Button ein Bild ist, identifizieren wir ihn über das Accessibility-Label "Teilen"
+        let shareButton = app.buttons["Teilen"]
+        XCTAssertTrue(shareButton.waitForExistence(timeout: 5), "Der Teilen-Button sollte in der Navigationsleiste existieren")
+        
+        // Der Teilen-Button sollte aktiviert sein, da wir ein Asset haben
+        XCTAssertTrue(shareButton.isEnabled, "Der Teilen-Button sollte aktiviert sein, wenn Assets vorhanden sind")
+        
+        // Speichere die aktuelle Asset-ID, um später zu prüfen, ob sich nichts geändert hat
+        let currentAssetId = assetView.label
+        
+        // Tippe auf den Teilen-Button
+        shareButton.tap()
+        
+        // Warte kurz, damit das Share-Sheet angezeigt werden kann
+        sleep(1)
+        
+        // Auf iOS können wir das Share-Sheet auf verschiedene Weise identifizieren
+        // Versuche zuerst mit ActivityListView
+        let activitySheet = app.otherElements["ActivityListView"]
+        if activitySheet.exists {
+            // Wenn das Activity Sheet als Element verfügbar ist
+            XCTAssertTrue(activitySheet.waitForExistence(timeout: 3.0), "Das Share-Sheet sollte angezeigt werden")
+            
+            // Finde den Abbrechen-Button und tippe darauf
+            // Versuche zunächst mit der englischen Lokalisierung
+            var cancelButton = app.buttons["Cancel"]
+            if !cancelButton.exists {
+                // Falls englische Lokalisierung nicht funktioniert, versuche deutsche
+                cancelButton = app.buttons["Abbrechen"]
+            }
+            
+            XCTAssertTrue(cancelButton.waitForExistence(timeout: 2.0), "Der Abbrechen-Button sollte im Share-Sheet sichtbar sein")
+            cancelButton.tap()
+        } else {
+            // Alternative Überprüfung, falls die ActivityListView nicht direkt identifizierbar ist
+            // Prüfe auf typische Share-Sheet-Elemente wie CollectionViews oder Sheets
+            let shareOptions = app.sheets.firstMatch
+            if shareOptions.exists {
+                XCTAssertTrue(shareOptions.waitForExistence(timeout: 3.0), "Ein Sheet sollte angezeigt werden")
+                
+                // Versuche verschiedene Optionen für den Abbrechen-Button
+                var cancelButton = app.buttons["Cancel"]
+                if !cancelButton.exists {
+                    cancelButton = app.buttons["Abbrechen"]
+                }
+                
+                if cancelButton.exists {
+                    cancelButton.tap()
+                } else {
+                    // Wenn kein spezifischer Abbrechen-Button gefunden wird, tippe außerhalb des Sheets
+                    // oder verwende den ersten Button in der Navigation Bar
+                    app.navigationBars.buttons.firstMatch.tap()
+                }
+            } else {
+                // Wenn weder ActivityListView noch Sheet gefunden wird, nimm an, dass sich das Share-Sheet nicht richtig geöffnet hat
+                XCTFail("Das Share-Sheet wurde nicht ordnungsgemäß angezeigt")
+            }
+        }
+        
+        // Warte kurz, bis das Share-Sheet geschlossen wurde
+        sleep(1)
+        
+        // Stelle sicher, dass wir wieder zum Asset-View zurückkehren und das gleiche Asset angezeigt wird
+        XCTAssertTrue(assetView.waitForExistence(timeout: 3.0), "Nach dem Schließen des Share-Sheets sollte der Asset-View wieder sichtbar sein")
+        XCTAssertEqual(assetView.label, currentAssetId, "Nach dem Teilen sollte das gleiche Asset angezeigt werden")
     }
 }

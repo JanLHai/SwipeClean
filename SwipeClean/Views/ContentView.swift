@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  SwipeClean
 //
-//  Created by Jan Haider on [Datum].
+//  Updated with sharing functionality
 //
 
 import SwiftUI
@@ -14,6 +14,66 @@ import AVKit
 struct AssetDecision {
     let asset: PHAsset
     let wasKept: Bool  // true = zum Behalten, false = zum Löschen
+}
+
+// ShareController als UIViewControllerRepresentable für zuverlässiges Teilen
+struct ShareController: UIViewControllerRepresentable {
+    var shareContent: [Any]
+    @Binding var isPresented: Bool
+    
+    func makeUIViewController(context: Context) -> UIViewController {
+        let controller = UIViewController()
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // Nur präsentieren, wenn isPresented true ist und noch kein Sheet angezeigt wird
+        if isPresented && uiViewController.presentedViewController == nil {
+            let activityVC = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
+            
+            // Callback für den Fall, dass das Share-Sheet geschlossen wird
+            activityVC.completionWithItemsHandler = { (_, _, _, _) in
+                self.isPresented = false
+            }
+            
+            // In iPads müssen wir einen popover verwenden
+            if let popover = activityVC.popoverPresentationController {
+                popover.sourceView = uiViewController.view
+                popover.sourceRect = CGRect(x: uiViewController.view.bounds.midX,
+                                           y: uiViewController.view.bounds.midY,
+                                           width: 0,
+                                           height: 0)
+                popover.permittedArrowDirections = []
+            }
+            
+            // Präsentiere das Share-Sheet
+            uiViewController.present(activityVC, animated: true)
+        }
+    }
+}
+
+// Klasse für den Text mit Link zum Teilen
+class ShareTextWithLink: NSObject, UIActivityItemSource {
+    let text: String
+    let appStoreURL: URL
+    
+    init(text: String, appStoreURL: URL) {
+        self.text = text
+        self.appStoreURL = appStoreURL
+        super.init()
+    }
+    
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return text
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        return "\(text)\n\(appStoreURL.absoluteString)"
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
+        return "Clean my Gallery"
+    }
 }
 
 struct ContentView: View {
@@ -44,6 +104,13 @@ struct ContentView: View {
     @State private var dynamicBackground: Color = .clear
     @State private var showResetConfirmation = false
     @State private var showSlideOver = false
+    
+    // State für Share Sheet
+    @State private var isShareSheetPresented = false
+    @State private var shareItems: [Any] = []
+    
+    // App Store Link
+    private let appStoreURL = URL(string: "https://apps.apple.com/us/app/clean-my-gallery/id6741366946?ppid=874ef790-f05e-453d-8dcf-b0b8dbdb9fc5")!
     
     // Neue persistente Einstellungen (lokal, ohne iCloud-Sync)
     @AppStorage("mediaMutedLocal") var mediaMutedLocal: Bool = false
@@ -252,8 +319,25 @@ struct ContentView: View {
                 }
             }
             
-            // Gruppe rechts: Fertig-Button und Filter-Icon
+            // Gruppe rechts: Share-Button und Fertig-Button
             ToolbarItemGroup(placement: .navigationBarTrailing) {
+                // Neuer Share-Button
+                Button(action: {
+                    prepareAndShowShareSheet()
+                }) {
+                    Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 22, height: 22)
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(assets.isEmpty ? Color(UIColor.lightGray) : Color.blue)
+                        .clipShape(Circle())
+                        .scaleEffect(0.7)
+                        .accessibilityLabel("Teilen")
+                }
+                .disabled(assets.isEmpty)
+                
                 Button("Fertig (\(pendingDeletion.count))") {
                     if !pendingDeletion.isEmpty {
                         showReview = true
@@ -263,6 +347,9 @@ struct ContentView: View {
                 }
             }
         }
+        .background(
+            ShareController(shareContent: shareItems, isPresented: $isShareSheetPresented)
+        )
         .sheet(isPresented: $showReview, onDismiss: {
             popToRoot()
         }) {
@@ -285,6 +372,64 @@ struct ContentView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+    
+    // Neue Funktion zum Vorbereiten und Anzeigen des Share-Sheets
+    func prepareAndShowShareSheet() {
+        guard let currentAsset = assets.first else { return }
+        
+        // Lokalisierter Text für die Teilen-Funktion mit App Store Link
+        let sharedWithText = NSLocalizedString("Geteilt mit der App Clean my Gallery", comment: "Share text that appears when sharing media")
+        let shareText = ShareTextWithLink(text: sharedWithText, appStoreURL: appStoreURL)
+        
+        // Wir laden erst die Daten und setzen dann isShareSheetPresented auf true
+        if currentAsset.mediaType == .video {
+            // Video teilen
+            let options = PHVideoRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            options.isNetworkAccessAllowed = true
+            
+            PHImageManager.default().requestAVAsset(forVideo: currentAsset, options: options) { avAsset, _, _ in
+                if let urlAsset = avAsset as? AVURLAsset {
+                    DispatchQueue.main.async {
+                        // Hier können wir das Video als URL teilen - wichtig: das Video muss zuerst kommen!
+                        self.shareItems = [urlAsset.url, shareText]
+                        self.isShareSheetPresented = true
+                    }
+                } else {
+                    // Fallback für den Fall, dass wir keine URL haben
+                    DispatchQueue.main.async {
+                        // Versuche stattdessen, das Thumbnail zu teilen
+                        if let thumbnail = self.imageCache.cache[currentAsset.localIdentifier] {
+                            self.shareItems = [thumbnail, shareText]
+                            self.isShareSheetPresented = true
+                        }
+                    }
+                }
+            }
+        } else {
+            // Bild teilen
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            options.resizeMode = .none
+            options.isNetworkAccessAllowed = true
+            options.isSynchronous = false
+            
+            PHImageManager.default().requestImage(
+                for: currentAsset,
+                targetSize: PHImageManagerMaximumSize,
+                contentMode: .default,
+                options: options
+            ) { image, _ in
+                if let image = image {
+                    DispatchQueue.main.async {
+                        // Bild zuerst, dann Text mit Link
+                        self.shareItems = [image, shareText]
+                        self.isShareSheetPresented = true
+                    }
+                }
+            }
+        }
     }
     
     func requestPhotoLibraryAccess() {

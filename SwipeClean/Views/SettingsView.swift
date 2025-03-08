@@ -44,7 +44,7 @@ struct SettingsView: View {
                 // Header als erste Zeile im Form – scrollt mit
                 Section {
                     VStack {
-                        Image("SwipeClean-Icon_Light")
+                        Image("IconLight_asImage")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: UIScreen.main.bounds.width * 0.3)

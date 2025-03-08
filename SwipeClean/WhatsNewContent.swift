@@ -5,15 +5,16 @@
 //  Created by Jan Haider on 16.02.25.
 //
 
-
 import Foundation
 import WhatsNewKit
 
 struct WhatsNewContent {
+    // Aktuelle Version
     static var version: WhatsNew.Version {
-        .init(stringLiteral: "1.1.0")
+        .init(stringLiteral: "1.2.1")
     }
     
+    // Titel mit dynamischer Version
     static var title: WhatsNew.Title {
         // Lade den Basis-Titel aus der Lokalisierung und hänge die Version an
         let baseTitle = NSLocalizedString("whatsNew_title", comment: "Basis-Titel für WhatsNew (ohne Version)")
@@ -24,24 +25,24 @@ struct WhatsNewContent {
     static var features: [WhatsNew.Feature] {
         [
             .init(
-                image: .init(systemName: "icloud"),
-                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature1_title_v.1.1.0", comment: "iCloud Synchronisation")),
-                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature1_subtitle_v.1.1.0", comment: "Es gibt nun die Möglichkeit, die Einstellungen und Daten über die Bilder mit iCloud zu synchronisieren"))
+                image: .init(systemName: "plus.magnifyingglass"),
+                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature1_title", comment: "Zoom-Funktion")),
+                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature1_subtitle", comment: "Mann kann nun bei Bildern mit der üblichen Geste zoomen"))
             ),
             .init(
-                image: .init(systemName: "play.rectangle"),
-                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature2_title_v.1.1.0", comment: "Video Support")),
-                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature2_subtitle_v.1.1.0", comment: "Sie können nun auch Videos ausmisten"))
+                image: .init(systemName: "square.and.arrow.up"),
+                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature2_title", comment: "Share Media")),
+                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature2_subtitle", comment: "Es ist nun möglich Medien direkt aus der App an Kontakte zu teilen"))
             ),
             .init(
-                image: .init(systemName: "speaker.slash"),
-                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature3_title_v.1.1.0", comment: "Lautstärke Stummschalten")),
-                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature3_subtitle_v.1.1.0", comment: "Sie können nun entscheiden, ob Sie Töne stummschalten möchten"))
+                image: .init(systemName: "heart"),
+                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature3_title", comment: "Als Favorit markieren")),
+                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature3_subtitle", comment: "Man kann nun auswählen ob ein Bild auch in der Gallery als Favorit angezeigt werden soll"))
             ),
             .init(
-                image: .init(systemName: "character.bubble"),
-                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature4_title_v.1.1.0", comment: "Zusätzliche Sprachen")),
-                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature4_subtitle_v.1.1.0", comment: "Wir unterstützen nun auch neben der Deutschen die Englische, Französische, Italienische, Japanische, Koreanische, Portugiesische, Hindi, Spanisch, Chinesisch (vereinfacht) und Russische Sprache"))
+                image: .init(systemName: "character.bubble.ar"),
+                title: .init(stringLiteral: NSLocalizedString("whatsNew_feature4_title", comment: "Zusätzliche Sprache Arabisch")),
+                subtitle: .init(stringLiteral: NSLocalizedString("whatsNew_feature4_subtitle", comment: "Wir unterstützen nun auch neben den bisherigen Sprachen die Arabische Sprache"))
             )
         ]
     }
@@ -57,4 +58,5 @@ struct WhatsNewContent {
             }
         )
     }
+    
 }

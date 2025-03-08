@@ -19,7 +19,7 @@ struct SwipeCleanApp: App {
                         // Specify in which way the presented WhatsNew Versions are stored.
                         // zum entwikeln kann man diesen Modus verwenden InMemoryWhatsNewVersionStore
                         // In default the `UserDefaultsWhatsNewVersionStore` is used.
-                        versionStore: UserDefaultsWhatsNewVersionStore(),
+                        versionStore: InMemoryWhatsNewVersionStore(),
                         whatsNewCollection: self
                     )
                 )

@@ -281,77 +281,6 @@
         }
       }
     },
-    "Bild wiederherstellen" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bild wiederherstellen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restore images"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurar imagen"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurer l’image"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "चित्र पुनर्स्थापित करें"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ripristina immagine"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "画像を復元する"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이미지 복원"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurar imagem"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Восстановить изображение"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "恢复图片"
-          }
-        }
-      }
-    },
     "Bilder" : {
       "localizations" : {
         "de" : {
@@ -1402,6 +1331,77 @@
         }
       }
     },
+    "Geteilt mit der App Clean my Gallery" : {
+      "comment" : "Share text that appears when sharing media",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geteilt mit der App Clean my Gallery"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shared with the app Clean my Gallery"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartido con la aplicación Clean my Gallery"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partagé avec l'application Clean my Gallery"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery ऐप के साथ साझा किया गया"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condiviso con l'app Clean my Gallery\n"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ ギャラリークリーナー で共有"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean my Gallery 앱으로 공유"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartilhado com o aplicativo Clean my Gallery"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поделено через приложение Очистка Галереи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与应用程序清理图库分享"
+          }
+        }
+      }
+    },
     "Hilfe" : {
       "localizations" : {
         "de" : {
@@ -1538,77 +1538,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无图片"
-          }
-        }
-      }
-    },
-    "Kein Foto in diesem Zeitraum gefunden" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kein Foto in diesem Zeitraum gefunden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kein Foto in diesem Zeitraum gefunden"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se encontró ninguna foto en este período"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aucune photo trouvée pour cette période"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "इस अवधि में कोई फोटो नहीं मिला"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nessuna foto trovata in questo periodo"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この期間に写真が見つかりませんでした"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "해당 기간에 사진을 찾을 수 없습니다"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhuma foto encontrada neste período"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Фотография за этот период не найдена"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此期间未找到照片"
           }
         }
       }
@@ -1754,7 +1683,74 @@
       }
     },
     "Letzte Entscheidung rückgängig machen" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzte Entscheidung rückgängig machn"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo last decision"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deshacer la última decisión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la dernière décision"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "अंतिम निर्णय को पूर्ववत करें"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla l'ultima decisione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最後の決定を元に戻す"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마지막 결정을 실행 취소"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desfazer a última decisão"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить последнее решение"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销上次决定"
+          }
+        }
+      }
     },
     "LivePhoto" : {
       "localizations" : {
@@ -2596,6 +2592,76 @@
         }
       }
     },
+    "Teilen" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "साझा करें"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "共有"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공유"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartilhar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поделиться"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享"
+          }
+        }
+      }
+    },
     "Ton" : {
       "localizations" : {
         "de" : {
@@ -2946,570 +3012,570 @@
         }
       }
     },
-    "whatsNew_feature1_subtitle_v.1.1.0" : {
-      "comment" : "Es gibt nun die Möglichkeit, die Einstellungen und Daten über die Bilder mit iCloud zu synchronisieren",
+    "whatsNew_feature1_subtitle" : {
+      "comment" : "Mann kann nun bei Bildern mit der üblichen Geste zoomen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es gibt nun die Möglichkeit, die Einstellungen und Daten über die Bilder mit iCloud zu synchronisieren"
+            "value" : "Man kann nun bei Bildern mit der üblichen Geste zoomen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can now sync settings and data via images with iCloud"
+            "value" : "You can now zoom in on images using the usual gesture."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ahora es posible sincronizar configuraciones y datos mediante las imágenes con iCloud"
+            "value" : "Ahora puedes hacer zoom en las imágenes con el gesto habitual."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il est désormais possible de synchroniser les réglages et les données via les images avec iCloud"
+            "value" : "Vous pouvez maintenant zoomer sur les images avec le geste habituel."
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "अब आप iCloud के माध्यम से चित्रों द्वारा सेटिंग्स और डेटा सिंक्रनाइज़ कर सकते हैं"
+            "value" : "अब आप सामान्य इशारे का उपयोग करके चित्रों को ज़ूम कर सकते हैं।"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ora è possibile sincronizzare impostazioni e dati tramite le immagini con iCloud"
+            "value" : "Ora puoi ingrandire le immagini utilizzando il gesto abituale."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloudを使って画像経由で設定とデータを同期できるようになりました"
+            "value" : "通常のジェスチャーで画像をズームできるようになりました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이제 iCloud를 통해 사진으로 설정 및 데이터를 동기화할 수 있습니다"
+            "value" : "이제 일반적인 제스처를 사용하여 이미지를 확대할 수 있습니다."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agora é possível sincronizar configurações e dados através das imagens com o iCloud"
+            "value" : "Agora você pode ampliar imagens usando o gesto usual."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Теперь можно синхронизировать настройки и данные через изображения с iCloud"
+            "value" : "Теперь вы можете увеличивать изображения с помощью обычного жеста."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "现在可以通过图片与 iCloud 同步设置和数据"
+            "value" : "现在可以用常规手势缩放图片。"
           }
         }
       }
     },
-    "whatsNew_feature1_title_v.1.1.0" : {
-      "comment" : "iCloud Synchronisation",
+    "whatsNew_feature1_title" : {
+      "comment" : "Zoom-Funktion",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud Synchronisation"
+            "value" : "Zoom-Funktion"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud Synchronization"
+            "value" : "Zoom function"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sincronización de iCloud"
+            "value" : "Función de zoom"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Synchronisation iCloud"
+            "value" : "Fonction de zoom"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud सिंक्रनाइज़ेशन"
+            "value" : "ज़ूम फ़ंक्शन"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sincronizzazione iCloud"
+            "value" : "Funzione di zoom"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud同期"
+            "value" : "ズーム機能"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud 동기화"
+            "value" : "줌 기능"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sincronização iCloud"
+            "value" : "Função de zoom"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Синхронизация iCloud"
+            "value" : "Функция увеличения"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud 同步"
+            "value" : "缩放功能"
           }
         }
       }
     },
-    "whatsNew_feature2_subtitle_v.1.1.0" : {
-      "comment" : "Sie können nun auch Videos ausmisten",
+    "whatsNew_feature2_subtitle" : {
+      "comment" : "Es ist nun möglich Medien direkt aus der App an Kontakte zu teilen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie können nun auch Videos ausmisten"
+            "value" : "Es ist nun möglich, Medien direkt aus der App an Kontakte zu teilen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can now also declutter videos"
+            "value" : "It is now possible to share media directly from the app with contacts."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ahora también puedes organizar tus videos"
+            "value" : "Ahora es posible compartir medios directamente desde la aplicación con contactos."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous pouvez désormais également nettoyer vos vidéos"
+            "value" : "Il est désormais possible de partager des médias directement depuis l'application avec des contacts."
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "अब आप वीडियो भी साफ़-सुथरे कर सकते हैं"
+            "value" : "अब ऐप से सीधे संपर्कों के साथ मीडिया साझा करना संभव है।"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ora puoi anche fare pulizia nei video"
+            "value" : "Ora è possibile condividere i media direttamente dall'app con i contatti."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "動画の整理もできるようになりました"
+            "value" : "アプリから直接連絡先にメディアを共有できるようになりました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이제 동영상도 정리할 수 있습니다"
+            "value" : "이제 앱에서 직접 연락처로 미디어를 공유할 수 있습니다."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agora você também pode limpar os vídeos"
+            "value" : "Agora é possível compartilhar mídia diretamente do aplicativo com contatos."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Теперь вы также можете навести порядок в видео"
+            "value" : "Теперь можно делиться медиафайлами напрямую из приложения с контактами."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "现在您也可以清理视频"
+            "value" : "现在可以直接从应用程序将媒体分享给联系人。"
           }
         }
       }
     },
-    "whatsNew_feature2_title_v.1.1.0" : {
-      "comment" : "Video Support",
+    "whatsNew_feature2_title" : {
+      "comment" : "Share Media",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Video Support"
+            "value" : "Medien teilen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Video Support"
+            "value" : "Share media"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Soporte de video"
+            "value" : "Compartir medios"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Support Vidéo"
+            "value" : "Partager des médias"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "वीडियो समर्थन"
+            "value" : "मीडिया साझा करें"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Supporto Video"
+            "value" : "Condividi media"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "動画サポート"
+            "value" : "メディアを共有"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "동영상 지원"
+            "value" : "미디어 공유"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suporte a Vídeo"
+            "value" : "Compartilhar mídia"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Поддержка видео"
+            "value" : "Поделиться медиа"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "视频支持"
+            "value" : "分享媒体"
           }
         }
       }
     },
-    "whatsNew_feature3_subtitle_v.1.1.0" : {
-      "comment" : "Sie können nun entscheiden, ob Sie Töne stummschalten möchten",
+    "whatsNew_feature3_subtitle" : {
+      "comment" : "Man kann nun auswählen ob ein Bild auch in der Gallery als Favorit angezeigt werden soll",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie können nun in den Einstellungen entscheiden, ob Sie Töne stummschalten möchten"
+            "value" : "Man kann nun auswählen, ob ein Bild auch in der Galerie als Favorit angezeigt werden soll."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can now decide in the settings whether to mute sounds"
+            "value" : "You can now choose whether an image should also be displayed as a favorite in the gallery."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ahora puedes decidir en la configuración si deseas silenciar los sonidos"
+            "value" : "Ahora puedes elegir si una imagen también debe mostrarse como favorita en la galería."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous pouvez désormais choisir dans les paramètres de mettre les sons en sourdine"
+            "value" : "Vous pouvez maintenant choisir si une image doit également être affichée comme favori dans la galerie."
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "अब आप सेटिंग्स में तय कर सकते हैं कि आप ध्वनियों को म्यूट करना चाहते हैं या नहीं"
+            "value" : "अब आप चुन सकते हैं कि कोई चित्र गैलरी में पसंदीदा के रूप में दिखाया जाए या नहीं।"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ora puoi decidere nelle impostazioni se disattivare i suoni"
+            "value" : "Ora puoi scegliere se un'immagine deve essere visualizzata come preferita anche nella galleria."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定でサウンドをミュートするかどうか選択できるようになりました"
+            "value" : "ギャラリーで画像をお気に入りとして表示するかどうかを選択できるようになりました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이제 설정에서 소리를 음소거할지 결정할 수 있습니다"
+            "value" : "이제 갤러리에서 이미지를 즐겨찾기로 표시할지 선택할 수 있습니다."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agora você pode decidir nas configurações se deseja silenciar os sons"
+            "value" : "Agora você pode escolher se uma imagem também deve ser exibida como favorita na galeria."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Теперь вы можете в настройках решить, хотите ли вы отключить звуки"
+            "value" : "Теперь вы можете выбрать, должно ли изображение отображаться как избранное в галерее."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "现在您可以在设置中选择是否静音"
+            "value" : "现在可以选择是否将图片在图库中显示为收藏。"
           }
         }
       }
     },
-    "whatsNew_feature3_title_v.1.1.0" : {
-      "comment" : "Lautstärke Stummschalten",
+    "whatsNew_feature3_title" : {
+      "comment" : "Als Favorit markieren",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lautstärke Stummschalten"
+            "value" : "Als Favorit markieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mute Volume"
+            "value" : "Mark as favorite"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Silenciar volumen"
+            "value" : "Marcar como favorito"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couper le volume"
+            "value" : "Marquer comme favori"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "वॉल्यूम म्यूट करें"
+            "value" : "पसंदीदा के रूप में चिह्नित करें"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Disattiva volume"
+            "value" : "Segna come preferito"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "音量ミュート"
+            "value" : "お気に入りとしてマーク"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "음량 음소거"
+            "value" : "즐겨찾기로 표시"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Silenciar Volume"
+            "value" : "Marcar como favorito"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отключить громкость"
+            "value" : "Отметить как избранное"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "静音音量"
+            "value" : "标记为收藏"
           }
         }
       }
     },
-    "whatsNew_feature4_subtitle_v.1.1.0" : {
-      "comment" : "Wir unterstützen nun auch neben der Deutschen die Englische, Französische, Italienische, Japanische, Koreanische, Portugiesische, Hindi, Spanisch, Chinesisch (vereinfacht) und Russische Sprache",
+    "whatsNew_feature4_subtitle" : {
+      "comment" : "Wir unterstützen nun auch neben den bisherigen Sprachen die Arabische Sprache",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir unterstützen nun auch neben der Deutschen die Englische, Französische, Italienische, Japanische, Koreanische, Portugiesische, Hindi, Spanisch, Chinesisch (vereinfacht) und Russische Sprache"
+            "value" : "Wir unterstützen nun auch neben den bisherigen Sprachen die Arabische Sprache."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In addition to German, we now also support English, French, Italian, Japanese, Korean, Portuguese, Hindi, Spanish, Chinese (Simplified), and Russian"
+            "value" : "We now also support the Arabic language in addition to the existing languages."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Además del alemán, ahora también ofrecemos soporte para inglés, francés, italiano, japonés, coreano, portugués, hindi, español, chino (simplificado) y ruso"
+            "value" : "Ahora también admitimos el idioma árabe además de los idiomas existentes."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous supportons désormais, en plus de l’allemand, l’anglais, le français, l’italien, le japonais, le coréen, le portugais, l’hindi, l’espagnol, le chinois (simplifié) et le russe"
+            "value" : "Nous prenons désormais en charge la langue arabe en plus des langues existantes.\n"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "अब हम जर्मन के अलावा अंग्रेजी, फ्रेंच, इतालवी, जापानी, कोरियाई, पुर्तगाली, हिंदी, स्पेनिश, चीनी (सरलीकृत) और रूसी भाषाओं का भी समर्थन करते हैं"
+            "value" : "अब हम मौजूदा भाषाओं के अलावा अरबी भाषा का भी समर्थन करते हैं।"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ora supportiamo, oltre al tedesco, anche l’inglese, il francese, l’italiano, il giapponese, il coreano, il portoghese, l’hindi, lo spagnolo, il cinese (semplificato) e il russo"
+            "value" : "Ora supportiamo anche la lingua araba oltre alle lingue esistenti."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設定でサウンドをミュートするかどうか選択できるようになりました"
+            "value" : "既存の言語に加えて、アラビア語もサポートするようになりました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "독일어 외에도 영어, 프랑스어, 이탈리아어, 일본어, 한국어, 포르투갈어, 힌디어, 스페인어, 중국어(간체), 러시아어를 지원합니다"
+            "value" : "기존 언어 외에도 아랍어를 지원합니다."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Além do alemão, agora também oferecemos suporte para inglês, francês, italiano, japonês, coreano, português, hindi, espanhol, chinês (simplificado) e russo"
+            "value" : "Agora também suportamos o idioma árabe além dos idiomas existentes."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Теперь, помимо немецкого, мы также поддерживаем английский, французский, итальянский, японский, корейский, португальский, хинди, испанский, китайский (упрощённый) и русский языки"
+            "value" : "Теперь мы поддерживаем арабский язык в дополнение к существующим языкам."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "除了德语外，我们现在还支持英语、法语、意大利语、日语、韩语、葡萄牙语、印地语、西班牙语、简体中文和俄语"
+            "value" : "我们现在除了现有语言外，还支持阿拉伯语。"
           }
         }
       }
     },
-    "whatsNew_feature4_title_v.1.1.0" : {
-      "comment" : "Zusätzliche Sprachen",
+    "whatsNew_feature4_title" : {
+      "comment" : "Zusätzliche Sprache Arabisch",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zusätzliche Sprachen"
+            "value" : "Zusätzliche Sprache Arabisch"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Additional Languages"
+            "value" : "Additional language Arabic"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Idiomas adicionales"
+            "value" : "Idioma adicional: árabe"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Langues supplémentaires"
+            "value" : "Langue supplémentaire : arabe"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "अतिरिक्त भाषाएँ"
+            "value" : "अतिरिक्त भाषा: अरबी"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingue aggiuntive"
+            "value" : "Lingua aggiuntiva: arabo"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "追加の言語"
+            "value" : "追加言語: アラビア語"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "추가 언어"
+            "value" : "추가 언어: 아랍어"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Idiomas adicionais"
+            "value" : "Idioma adicional: árabe"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дополнительные языки"
+            "value" : "Дополнительный язык: арабский"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "附加语言"
+            "value" : "额外语言：阿拉伯语"
           }
         }
       }
